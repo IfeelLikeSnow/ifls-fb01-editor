@@ -1,0 +1,29 @@
+name: Repo sanity checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fail if macOS junk is committed
+        run: |
+          if find . -name ".DS_Store" -print -quit | grep -q .; then
+            echo ".DS_Store found. Remove it."; exit 1
+          fi
+
+      - name: Fail if runtime caches are committed
+        run: |
+          if find . -path "*IFLS_DB*" -print -quit | grep -q .; then
+            echo "IFLS_DB runtime folder should not be committed."; exit 1
+          fi
+
+      - name: Fail if SysEx libraries are inside reaper/ (should be optional assets)
+        run: |
+          if find reaper -type f \( -iname "*.syx" -o -iname "*.mid" -o -iname "*.midi" \) -print -quit | grep -q .; then
+            echo "Patch libraries found inside reaper/. Move them to optional release assets."; exit 1
+          fi

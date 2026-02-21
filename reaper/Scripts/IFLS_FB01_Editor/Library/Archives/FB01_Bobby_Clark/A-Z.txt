@@ -1,0 +1,923 @@
+These are patches originally created for the DX-21 by Bobby Clark.  I have converted them for use on the FB-01 using Martin Tarenskeen's FB_CNVRT program for the AtariST.  So a big thanks to him for that very useful program!  The files were originally dated April 22, 1987 (uh.... and it looks like I needed to set the date & time on the AtariST emulator, as they're now dated with the year 2032).
+
+The original patch list is as follows
+
+
+ DX   DX
+ 21   27 - patch name
+
+
+File: A.syx
+
+A 1    1 - DiversDown
+A 2    2 - Adrenaline
+A 3    3 - ManyPeople
+A 4    4 - Ragged Sun
+A 5    5 - TURN it ON
+A 6    6 - Deep Grand
+A 7    7 - OutOnALimb
+A 8    8 -   (IT)    
+A 9    9 - SummerBUGS
+A10   10 - Saxo-SYNH 
+A11   11 - Metasmorph
+A12   12 - Altered If
+A13   13 - TonightTT 
+A14   14 - No Regrets
+A15   15 - Madelyne  
+A16   16 - Willowisp\
+B 1   17 - SURGE     
+B 2   18 - Sable&Glow
+B 3   19 - WhereItsAt
+B 4   20 - HellRaiser
+B 5   21 - Fantasynth
+B 6   22 - Frazetta  
+B 7   23 - Let About 
+B 8   24 - Autumn    
+
+File: AA.syx
+
+A 1    1 - NEW AGE   
+A 2    2 - SMILEY    
+A 3    3 - TTT 3     
+A 4    4 - Chamelion2
+A 5    5 - Nuero     
+A 6    6 - Filmguitas
+A 7    7 - COOL BASS 
+A 8    8 - exks      
+A 9    9 - FX for DX 
+A10   10 - Frag Perc 
+A11   11 - Harpsiano 
+A12   12 - Ghastly ~
+A13   13 - PAC-MAN FX
+A14   14 - AlienPerc 
+A15   15 - FilmString
+A16   16 - Eerie     
+B 1   17 - Serium    
+B 2   18 - RATUIG    
+B 3   19 - Pianum    
+B 4   20 - 60's SciFi
+B 5   21 - Chamelion 
+B 6   22 - KILSMO    
+B 7   23 - MOODestra 
+B 8   24 - PianoMan  
+
+File: B.syx
+
+A 1    1 - Latin Perc
+A 2    2 - L. Perc. 2
+A 3    3 - L. Perc. 3
+A 4    4 - L. Perc. 4
+A 5    5 - Skid Marks
+A 6    6 - SpaceBells
+A 7    7 - M/A/R/R/S 
+A 8    8 - N/E/E/D/S 
+A 9    9 - W/O/M/E/N 
+A10   10 - Farpoint  
+A11   11 - Zeta Minor
+A12   12 - Seti Alpha
+A13   13 - Pac - Man 
+A14   14 - Randomizer
+A15   15 - Crystal   
+A16   16 - SynthBells
+B 1   17 - Bagpipes  
+B 2   18 - Woozy     
+B 3   19 - Crickets  
+B 4   20 - SteelSynth
+B 5   21 - Simon Says
+B 6   22 - FuturSynth
+B 7   23 - Randomizer
+B 8   24 - HellsBells
+
+File: BB.syx
+
+A 1    1 - RAPorSOLO 
+A 2    2 - Sarrow    
+A 3    3 - \ Osaka \ 
+A 4    4 - Split Perc
+A 5    5 - SplitPerc2
+A 6    6 - Pop Bass  
+A 7    7 - Narcissus 
+A 8    8 - LastChance
+A 9    9 - FX for DX 
+A10   10 - DAYDREAM  
+A11   11 - UNISON    
+A12   12 - AlienBass 
+A13   13 - Guit Piano
+A14   14 -  16 Bass  
+A15   15 - Real Snare
+A16   16 - Synth Drum
+B 1   17 - Guitarz   
+B 2   18 - RATUIG    
+B 3   19 - Pianum    
+B 4   20 - 60's SciFi
+B 5   21 - Chamelion 
+B 6   22 - KILSMO    
+B 7   23 - MOODestra 
+B 8   24 - PianoMan  
+
+File: C.syx
+
+A 1    1 - BassSynth1
+A 2    2 - StrngBrass
+A 3    3 - ElecGuitar
+A 4    4 - DEEPMOOD  
+A 5    5 - PortaSynth
+A 6    6 - BombToms  
+A 7    7 - Air Raid  
+A 8    8 - N/E/E/D/S 
+A 9    9 - LoveMatter
+A10   10 - FunkSynth 
+A11   11 - WILLOW    
+A12   12 - Kamikazi  
+A13   13 - InvisibTch
+A14   14 - PianoSynth
+A15   15 - Cosmos    
+A16   16 - Love Drums
+B 1   17 - Fluto 2o  
+B 2   18 - FableFloot
+B 3   19 - Piffy     
+B 4   20 - Predator  
+B 5   21 - SpaceOrgan
+B 6   22 - Psyche    
+B 7   23 -  ICARUS   
+B 8   24 - RainForest
+
+File: CC.syx
+
+A 1    1 -           
+A 2    2 -           
+A 3    3 -           
+A 4    4 -           
+A 5    5 -           
+A 6    6 -           
+A 7    7 -           
+A 8    8 -           
+A 9    9 -           
+A10   10 -           
+A11   11 -           
+A12   12 -           
+A13   13 - CLASSICsyn
+A14   14 - MOOG 2    
+A15   15 - TALL TALE 
+A16   16 - SiMmoMan  
+B 1   17 - HrnGtrCHRD
+B 2   18 - Ascent    
+B 3   19 - CHAOSVOICE
+B 4   20 - HIGH HELI 
+B 5   21 - Bongo     
+B 6   22 - fantasy ||
+B 7   23 - FantasBass
+B 8   24 - Pipe Man  
+
+File: D.syx
+
+A 1    1 - Shamansnth
+A 2    2 - WW3 Synth 
+A 3    3 - ElecGuit 2
+A 4    4 - Fab Sitar 
+A 5    5 - Harpsicrd3
+A 6    6 - Harpsicrd4
+A 7    7 - Telephone 
+A 8    8 - LoveIsAll 
+A 9    9 - E. Guit. 3
+A10   10 - E. Guit. 4
+A11   11 - Play Ball!
+A12   12 - Finder    
+A13   13 - DEEP SPACE
+A14   14 - Galaga    
+A15   15 - Steel Perc
+A16   16 - Cowbelle  
+B 1   17 - Cowbelle 2
+B 2   18 - Big Ben   
+B 3   19 - DyerMaker 
+B 4   20 - Hurricane 
+B 5   21 - Frying Pan
+B 6   22 - Phone 2   
+B 7   23 - SynthBell2
+B 8   24 - L. Perc. 5
+
+File: DD.syx
+
+A 1    1 -  The ALIEN
+A 2    2 - FEEDBAK   
+A 3    3 - SYSTEM    
+A 4    4 - Liq.Notes 
+A 5    5 - ABACABFX  
+A 6    6 -  D FX     
+A 7    7 - StellarPn.
+A 8    8 - Liq.Libido
+A 9    9 - MORe ALIEN
+A10   10 - Outland   
+A11   11 - FUZZTAR  1
+A12   12 - FrogDreams
+A13   13 - HONKEY 2  
+A14   14 - 2OctavePn.
+A15   15 - Lacapia   
+A16   16 - Violintar 
+B 1   17 - WO  PO  O 
+B 2   18 -  ON       
+B 3   19 - Cult.Piano
+B 4   20 - Dynamic  2
+B 5   21 - FX   BASS 
+B 6   22 - COOL KOTO 
+B 7   23 - CHILLER   
+B 8   24 - Eclo BASS 
+
+File: E.syx
+
+A 1    1 - SHAMAGAN 2
+A 2    2 - Dial Tone 
+A 3    3 - BusySignal
+A 4    4 - Ringing   
+A 5    5 - LondonCall
+A 6    6 - Touch-Tone
+A 7    7 - OffTheHook
+A 8    8 - So        
+A 9    9 - SynblChime
+A10   10 - Jam Synth 
+A11   11 - Rifle Shot
+A12   12 - WhstlOrgan
+A13   13 - Wonderland
+A14   14 - The Circus
+A15   15 - Agent 007 
+A16   16 - Miami Timp
+B 1   17 - Synthstra 
+B 2   18 - WotGorilla
+B 3   19 - Symbollo  
+B 4   20 - Andromeda 
+B 5   21 - Cassiopeia
+B 6   22 - BlueMonday
+B 7   23 - Rim       
+B 8   24 - Autumn    
+
+
+File: EE.syx
+
+A 1    1 - Raindrops 
+A 2    2 - Rough Bass
+A 3    3 - Onlooker  
+A 4    4 - Lucky Man 
+A 5    5 - QuantumFX 
+A 6    6 - WO  PX    
+A 7    7 - Shatt.Per.
+A 8    8 - TOM       
+A 9    9 - BASS  Per.
+A10   10 - NINTENDO  
+A11   11 - GRADIUS   
+A12   12 - GRADIUS 2 
+A13   13 - GUITARZAN 
+A14   14 - Juno      
+A15   15 - OONo      
+A16   16 - M  6  B   
+B 1   17 - ==========
+B 2   18 - OON       
+B 3   19 - Cult.Piano
+B 4   20 - Bolt.Piano
+B 5   21 - Bolt.Piano
+B 6   22 - KILROY    
+B 7   23 - AUTOMATROP
+B 8   24 - AUTOMATON 
+
+
+File: F.syx
+
+A 1    1 - ELek Guit 
+A 2    2 - ELek Guit2
+A 3    3 - &so it was
+A 4    4 - GroundZero
+A 5    5 - * SNARF * 
+A 6    6 - RogerMoore
+A 7    7 - MasterBlas
+A 8    8 - Helisynth 
+A 9    9 - Encounter 
+A10   10 - Mama      
+A11   11 - Betelgeuse
+A12   12 - RunningMan
+A13   13 - eeker     
+A14   14 - Ton       
+A15   15 - Ton 3     
+A16   16 - PROPHET 1 
+B 1   17 - StarVeins 
+B 2   18 - StarVeins2
+B 3   19 - StarVeins3
+B 4   20 -     Void  
+B 5   21 - UFOFX OK? 
+B 6   22 - UFOFX OK?2
+B 7   23 -  PLUTO    
+B 8   24 - [[[[XX]]]]
+
+File: FF.syx
+
+
+A 1    1 - GroovCHORD
+A 2    2 - Last Bass4
+A 3    3 - ?? WHO ?? 
+A 4    4 - OON       
+A 5    5 - sselterF  
+A 6    6 - Split Perc
+A 7    7 - Highlander
+A 8    8 - Symphonica
+A 9    9 - SplitPerc2
+A10   10 - WOW FOW   
+A11   11 - YANHAMMERY
+A12   12 - ABACAB    
+A13   13 - UnicrnHorn
+A14   14 - Trails end
+A15   15 - SynthHiHat
+A16   16 - PercSYNTH 
+B 1   17 - Sable&Glow
+B 2   18 - DOWNtheHat
+B 3   19 - Synth D 2 
+B 4   20 - zzzzZEPHYR
+B 5   21 - Pianist   
+B 6   22 - Trails end
+B 7   23 - StellarPn.
+B 8   24 -  ICARUS   
+
+File: G.syx
+
+
+A 1    1 - Symphonica
+A 2    2 - BassSynth2
+A 3    3 - Synthstra2
+A 4    4 - PearlHarbr
+A 5    5 - ICARUS II 
+A 6    6 - Communion 
+A 7    7 - Substance 
+A 8    8 - Goldfinger
+A 9    9 - .007 Organ
+A10   10 - 1999      
+A11   11 - Running   
+A12   12 - TheyreHere
+A13   13 - *INVASION*
+A14   14 - Synthalife
+A15   15 - Caprica   
+A16   16 - Absolute 0
+B 1   17 - Continuum 
+B 2   18 - AceOfSword
+B 3   19 - Blitzkrieg
+B 4   20 - Bombs Away
+B 5   21 - Mind's Eye
+B 6   22 - ViolaSynth
+B 7   23 - 2492 A.D. 
+B 8   24 - WW2 Synth 
+
+File: GG.syx
+
+
+A 1    1 - Lucky Man 
+A 2    2 - OON       
+A 3    3 - KILROY    
+A 4    4 - Lucky Man 
+A 5    5 - Flap Bass 
+A 6    6 - Flap Bass 
+A 7    7 - Shatt.Per.
+A 8    8 - TOM       
+A 9    9 - BASS  Per.
+A10   10 - NINTENDO  
+A11   11 - GRADIUS   
+A12   12 - S/H Synth 
+A13   13 - Vangelis  
+A14   14 - PANAFLOOA 
+A15   15 - S/H Synth 
+A16   16 - M  6  B   
+B 1   17 - ==========
+B 2   18 - OON       
+B 3   19 - Cult.Piano
+B 4   20 - Guitar   2
+B 5   21 - TALISMAN  
+B 6   22 - Cult.Piano
+B 7   23 - WOW FOW   
+B 8   24 - EVENINGBEL
+
+File: H.syx
+
+
+A 1    1 - 11th Earl 
+A 2    2 - of MAR    
+A 3    3 - Cat--Synth
+A 4    4 - Poseidon  
+A 5    5 - Hide&Seek 
+A 6    6 - Spooksynth
+A 7    7 - "The Bard"
+A 8    8 - Gallifrey 
+A 9    9 - Bassist   
+A10   10 - 1700 Synth
+A11   11 - Wood Perc 
+A12   12 - Psyche II 
+A13   13 - Coconutz!!
+A14   14 - Islander  
+A15   15 - Jamaican  
+A16   16 - Airwaves  
+B 1   17 - Zenith~  
+B 2   18 - Rainbow FX
+B 3   19 - Europa    
+B 4   20 - Ghost Town
+B 5   21 - Apocalypse
+B 6   22 - James Bond
+B 7   23 - Duane Eddy
+B 8   24 - Low-Life  
+
+File: I.syx
+
+
+A 1    1 -  Space ...
+A 2    2 - Trekkie   
+A 3    3 - Energize! 
+A 4    4 - Beam us up
+A 5    5 - Hawaiian  
+A 6    6 - FRONTIER  
+A 7    7 - Slapsynth 
+A 8    8 - VibeSynth 
+A 9    9 - {-VACUUM-}
+A10   10 - ?? WHO ?? 
+A11   11 - Timelord  
+A12   12 - Time Winds
+A13   13 - XQ-77     
+A14   14 - ELECTRICgt
+A15   15 - UFO Synth 
+A16   16 - ForestFire
+B 1   17 - Cowbelle 3
+B 2   18 - Mute Cbell
+B 3   19 - 2:58 A.M. 
+B 4   20 - BassSynth3
+B 5   21 - Searcher  
+B 6   22 - Unsynth   
+B 7   23 - LaserSynth
+B 8   24 - *VISITOR* 
+
+File: J.syx
+
+
+A 1    1 - Anysynth  
+A 2    2 - OtherSynth
+A 3    3 - Organiser 
+A 4    4 - Organism  
+A 5    5 - SynthOrgan
+A 6    6 - Dreamscape
+A 7    7 - Dscape II 
+A 8    8 - ESP Synth 
+A 9    9 - Weird Bass
+A10   10 - Kawasaki  
+A11   11 - Unbass    
+A12   12 - AlienStorm
+A13   13 - Unshamagan
+A14   14 - VibraStrng
+A15   15 - Harpsynth 
+A16   16 - Enigma    
+B 1   17 - Traveller 
+B 2   18 - Shiver    
+B 3   19 - WeirdSynth
+B 4   20 - SitarSynth
+B 5   21 - Noname    
+B 6   22 - Dscape III
+B 7   23 - SmoothBass
+B 8   24 - ShmganBass
+
+File: K.syx
+
+
+A 1    1 - Casises   
+A 2    2 - Synthedge 
+A 3    3 - Muddle    
+A 4    4 - Calvary   
+A 5    5 - DiamondLuv
+A 6    6 - Elec. Lute
+A 7    7 - Harpspiano
+A 8    8 - Brass,Back
+A 9    9 - FM BELLS  
+A10   10 - Isixy     
+A11   11 -  BS  Synth
+A12   12 - SLOW Synth
+A13   13 - Embryo    
+A14   14 -  SKARO    
+A15   15 -  LEVITAT. 
+A16   16 - \ Okinawa 
+B 1   17 - Wisdom    
+B 2   18 - Alienvader
+B 3   19 - Slidesynth
+B 4   20 - So So     
+B 5   21 - Minuet    
+B 6   22 - Minuet II 
+B 7   23 - ShiverSynt
+B 8   24 - Mellow    
+
+File: L.syx
+
+
+A 1    1 - iffeq     
+A 2    2 - STINGGGGGG
+A 3    3 - JASTOR    
+A 4    4 - BrassKnuc.
+A 5    5 - 8\HPZD?QF_
+A 6    6 - Univac    
+A 7    7 - Zitar     
+A 8    8 - SteelPulse
+A 9    9 - Base Five 
+A10   10 - Hyperion  
+A11   11 - Elec Sitar
+A12   12 - Elec. "So"
+A13   13 - ICU       
+A14   14 -   LIQUIX  
+A15   15 - Subculture
+A16   16 - Hyperion  
+B 1   17 - METAL HEAD
+B 2   18 - Bard II   
+B 3   19 - DscapeOrch
+B 4   20 - BanjoSitar
+B 5   21 - MetalSitar
+B 6   22 - Snarf Bass
+B 7   23 - Force Five
+B 8   24 - Gallifrey2
+
+File: M.syx
+
+
+A 1    1 - Eclo      
+A 2    2 - MOURZWAK  
+A 3    3 - UnicrnHorn
+A 4    4 - Rainbow FX
+A 5    5 - Isixy     
+A 6    6 - Wisdom    
+A 7    7 - Embryo    
+A 8    8 -  LEVITAT. 
+A 9    9 - {-VACUUM-}
+A10   10 - ShiverSynt
+A11   11 - VibraStrng
+A12   12 - Juggermaut
+A13   13 - &so it was
+A14   14 -  ICARUS   
+A15   15 - SummerBUGS
+A16   16 - Crickets  
+B 1   17 - StarVeins3
+B 2   18 - Let About 
+B 3   19 - RainForest
+B 4   20 - Dscape III
+B 5   21 - DscapeOrch
+B 6   22 - Wonderland
+B 7   23 - Autumn    
+B 8   24 - Symphonica
+
+File: N.syx
+
+
+A 1    1 - Zen       
+A 2    2 - Slice&Dice
+A 3    3 - Victorian 
+A 4    4 - Peter Gunn
+A 5    5 - StatNation
+A 6    6 - Toy Piano 
+A 7    7 - Buzz Synth
+A 8    8 - PANINARO  
+A 9    9 -  FACEvalue
+A10   10 - Steurmer  
+A11   11 - Oh Lord   
+A12   12 - Steurmer 2
+A13   13 - Vocal     
+A14   14 - Uprt Bass2
+A15   15 -  DONT CARE
+A16   16 - UpInTheAir
+B 1   17 - Prophet II
+B 2   18 - Tropicana 
+B 3   19 -  VICE     
+B 4   20 - 90125     
+B 5   21 - Whistlix  
+B 6   22 - :G:I:Z:M:O
+B 7   23 - Mercury   
+B 8   24 -  Tangerine
+
+File: O.syx
+
+
+A 1    1 -  ELA      
+A 2    2 -    PULSE  
+A 3    3 - Folloxo   
+A 4    4 - 000PULSE  
+A 5    5 -   @?=#$&&:
+A 6    6 - QUASARS   
+A 7    7 - AZZATION  
+A 8    8 - AFTERGLOW 
+A 9    9 - YAZ       
+A10   10 - SpellTalk 
+A11   11 - ProphetIII
+A12   12 - Harmonizer
+A13   13 - Invisible!
+A14   14 -  ICARUS 3 
+A15   15 - MoodyBluu 
+A16   16 - The  organ
+B 1   17 - KORDZ     
+B 2   18 - PanfFlooto
+B 3   19 - Fantasy 55
+B 4   20 - ALGO.DANCE
+B 5   21 - ABACAB    
+B 6   22 - N*Y*M*P*H 
+B 7   23 - Tranquilo 
+B 8   24 - Tranquilos
+
+File: P.syx
+
+
+A 1    1 - Charmer   
+A 2    2 - neo-piano 
+A 3    3 - neo-piano2
+A 4    4 - Tranquilot
+A 5    5 - Throb     
+A 6    6 - Doors     
+A 7    7 - velosasnth
+A 8    8 - sleeper   
+A 9    9 - RealPiano 
+A10   10 - RealPiano2
+A11   11 - ShortCirc.
+A12   12 - EJA       
+A13   13 - IvoryEbo.2
+A14   14 - Glowstring
+A15   15 - AlarmXXWXY
+A16   16 - WAVESAY   
+B 1   17 - SynthHiHat
+B 2   18 - SYNTHYplop
+B 3   19 - SYNTHY}}} 
+B 4   20 -  TWINKLE  
+B 5   21 - LEEBADO   
+B 6   22 - BigHill   
+B 7   23 - Sitar II  
+B 8   24 - Sitarzi   
+
+File: Q.syx
+
+
+A 1    1 - Things    
+A 2    2 - First Base
+A 3    3 - Ballpark  
+A 4    4 - Operator  
+A 5    5 - London PD 
+A 6    6 - Shamtar   
+A 7    7 - SwampBugs 
+A 8    8 - SwampBugs2
+A 9    9 - SleighBell
+A10   10 - Paramedic 
+A11   11 - Synthual  
+A12   12 - ElecaGrand
+A13   13 - {  9999  }
+A14   14 - SunSnow   
+A15   15 -  timeless 
+A16   16 - EXPRMNT199
+B 1   17 - klnksicrd1
+B 2   18 - BANJOOB   
+B 3   19 - TheBIGBass
+B 4   20 - HEAVEN77  
+B 5   21 - SPRITE    
+B 6   22 - Odds      
+B 7   23 - SizzSynth 
+B 8   24 - TABOO     
+
+File: R.syx
+
+
+A 1    1 - Trails end
+A 2    2 - ABACABUS  
+A 3    3 - milgrams37
+A 4    4 - {risisira}
+A 5    5 - SoftTouch 
+A 6    6 - Looming   
+A 7    7 - Folklore!!
+A 8    8 - Vannation 
+A 9    9 - heesor    
+A10   10 - Ruckus    
+A11   11 - MATTA     
+A12   12 - Air Along!
+A13   13 - SOLO!!!!!!
+A14   14 - Japarimba 
+A15   15 - ElfisPerc.
+A16   16 - SilentRun.
+B 1   17 - MIRAGE    
+B 2   18 - DX UFO FXn
+B 3   19 - Zillionth2
+B 4   20 - Zillionth 
+B 5   21 - XQtar     
+B 6   22 - 28 8 18   
+B 7   23 - MOONWATER 
+B 8   24 - MoonFall  
+
+File: S.syx
+
+
+A 1    1 - Pianostra 
+A 2    2 - DX----Bass
+A 3    3 - Moongosh  
+A 4    4 - Grendel   
+A 5    5 - Lutee     
+A 6    6 - TISPER    
+A 7    7 - sequential
+A 8    8 - ensoniqua 
+A 9    9 - Vespers   
+A10   10 - noteslide 
+A11   11 - C2{d g d} 
+A12   12 - TISPER    
+A13   13 - ~}~QXZYJ 
+A14   14 - cahspa    
+A15   15 - cabala    
+A16   16 - Space Vibe
+B 1   17 - shlihk    
+B 2   18 - hyperbole 
+B 3   19 - A Hrpsicrd
+B 4   20 - OmegaBass 
+B 5   21 - Morpheus  
+B 6   22 - celestial 
+B 7   23 - Galaxy 4  
+B 8   24 - MoonFall  
+
+File: T.syx
+
+
+A 1    1 - GottaLearn
+A 2    2 - Opus 2000 
+A 3    3 - Twangy    
+A 4    4 - Eva       
+A 5    5 - Kettledrum
+A 6    6 - Algo  Bass
+A 7    7 - Jellosynth
+A 8    8 - Toymaker  
+A 9    9 - Pleiades  
+A10   10 - Nova      
+A11   11 - DX PIANO  
+A12   12 - WHALES?   
+A13   13 - WHALES? 2 
+A14   14 - Last Bass 
+A15   15 - Last Bass2
+A16   16 - Last Bass3
+B 1   17 - Last Bass4
+B 2   18 - @AlienBird
+B 3   19 - Celostoff 
+B 4   20 - Mark VII  
+B 5   21 - LOS ENDOS2
+B 6   22 - Celostoff2
+B 7   23 - FRAZETTA2 
+B 8   24 - LOS ENDOS 
+
+File: U.syx
+
+
+A 1    1 - pianestra 
+A 2    2 - THEMEstrng
+A 3    3 -    vox fx 
+A 4    4 - SlowString
+A 5    5 - ANGELHARP 
+A 6    6 - ANGELHARP3
+A 7    7 - ANGELHARP2
+A 8    8 - Lamia     
+A 9    9 - HALL ORCH.
+A10   10 - planePIANO
+A11   11 - CinemaPno.
+A12   12 - Archangel 
+A13   13 - S/Hguitar 
+A14   14 - PHOENIX   
+A15   15 - ANGELtears
+A16   16 -  SAMBAY   
+B 1   17 - OUTofWACK 
+B 2   18 - 10.99     
+B 3   19 - weird     
+B 4   20 - SO STRANGE
+B 5   21 - DrunkR2-D2
+B 6   22 - HorsingFX 
+B 7   23 - PLAYitLOW 
+B 8   24 - PLAYitLOW2
+
+File: V.syx
+
+
+A 1    1 - DX Bass II
+A 2    2 - Lefty     
+A 3    3 - SleepSynth
+A 4    4 - Elegia    
+A 5    5 - PowerPLAY!
+A 6    6 - Axel F.   
+A 7    7 - Kashmir   
+A 8    8 - LoveVICTIM
+A 9    9 - 2nd VICTIM
+A10   10 - Harpsi 100
+A11   11 - Shadows   
+A12   12 - Vibraphone
+A13   13 - Omni      
+A14   14 - Omnistra  
+A15   15 - Orchy     
+A16   16 - SpaceScene
+B 1   17 - Harpsi 101
+B 2   18 - Shada     
+B 3   19 - SnareSynth
+B 4   20 - Shamagan 3
+B 5   21 - Tomsynth  
+B 6   22 - Bass Drum 
+B 7   23 - Shakuhachi
+B 8   24 - JazzGuit 2
+
+File: W.syx
+
+
+A 1    1 - Hi-hat 1  
+A 2    2 - Synth Drum
+A 3    3 - Ventures  
+A 4    4 - Timelord 2
+A 5    5 - Delta     
+A 6    6 - Impulse   
+A 7    7 - Frontios  
+A 8    8 - Handclap  
+A 9    9 - Djinni    
+A10   10 - Romana    
+A11   11 - PureEnergy
+A12   12 - from      
+A13   13 - Odyssey   
+A14   14 - Vista     
+A15   15 - Ace      2
+A16   16 - Southpaw  
+B 1   17 - 2001      
+B 2   18 - Nebula    
+B 3   19 - Tomsynth 2
+B 4   20 - TTT II    
+B 5   21 - PercSYNTH 
+B 6   22 - Boullabass
+B 7   23 - SpaceBRASS
+B 8   24 - PianoPiano
+
+File: X.syx
+
+
+A 1    1 - ElphantGun
+A 2    2 - LORP      
+A 3    3 - BACKWARDS 
+A 4    4 - SteelBasss
+A 5    5 - BINARY    
+A 6    6 - Tron Bugs 
+A 7    7 - CRUNGE    
+A 8    8 - ElecHarpsi
+A 9    9 - WaitingRm.
+A10   10 - Affaglosia
+A11   11 - Groucho   
+A12   12 - WARP HORN 
+A13   13 - PARRALAX  
+A14   14 - PARRALAXIS
+A15   15 - PARRALAXOO
+A16   16 - GENESIS   
+B 1   17 - GESTALT   
+B 2   18 - FLOOJ     
+B 3   19 - ELF BELLS 
+B 4   20 - Tranquo   
+B 5   21 - Elegia II 
+B 6   22 - Xenophobia
+B 7   23 - FlapBassII
+B 8   24 - Cowbelle 4
+
+File: Y.syx
+
+
+A 1    1 - EsperPIANO
+A 2    2 - Rg        
+A 3    3 - GlassTears
+A 4    4 - Digibell  
+A 5    5 - ALBEDO    
+A 6    6 - Narcissus 
+A 7    7 - Frills    
+A 8    8 - Perc.Bass 
+A 9    9 - TWILIGHTA 
+A10   10 - Majestical
+A11   11 - PharoPIANO
+A12   12 - PharoPIAN2
+A13   13 - Confusion 
+A14   14 - Fantin    
+A15   15 - CinemaSyn.
+A16   16 - MarsPerct.
+B 1   17 - MarsGossa.
+B 2   18 - MarsBass  
+B 3   19 - c:Z6NL<VM@
+B 4   20 - 7th Doctor
+B 5   21 - Distortion
+B 6   22 - SolidBass2
+B 7   23 - xenomorph 
+B 8   24 - Quarks!!! 
+
+File: Z.syx
+
+
+A 1    1 - Azaxyr    
+A 2    2 - DRACOS    
+A 3    3 - SORCEROR  
+A 4    4 - DEMO      
+A 5    5 -    IS     
+A 6    6 - Ravolox   
+A 7    7 - GuitarPIPE
+A 8    8 - HAUNTASIA 
+A 9    9 - OMEGA     
+A10   10 - Nor. Wood 
+A11   11 - Rialto    
+A12   12 - SpaceSITAR
+A13   13 - Peladon   
+A14   14 - Mama Perc 
+A15   15 - Psycho    
+A16   16 - Rassilon  
+B 1   17 - Hindu     
+B 2   18 - Epilogue I
+B 3   19 - Z 19      
+B 4   20 - Z 20      
+B 5   21 - ShardSYNTH
+B 6   22 - Gauntlet  
+B 7   23 - Guitar Arc
+B 8   24 - SPACEYVIBE

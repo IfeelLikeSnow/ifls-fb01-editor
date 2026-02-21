@@ -1,0 +1,24 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# REAPER / runtime
+Exports/
+Logs/
+*.log
+
+# Lua bytecode
+*.luac
+
+# Temporary
+_tmp_extract/
+# IFLS runtime caches
+reaper/Scripts/**/Exports/
+reaper/Scripts/**/Logs/
+reaper/Scripts/**/IFLS_DB/
+reaper/Scripts/**/library_cache.json
+reaper/Scripts/**/library_user_meta.json
+reaper/Scripts/**/library_tags.json
+
+# Optional third-party libraries (keep out of public repo)
+optional_libraries/

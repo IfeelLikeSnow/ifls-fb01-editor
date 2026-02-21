@@ -1,0 +1,4 @@
+{
+  "config_change_sysch_inst": "F0 43 75 {sysMinus1:02X} {zz:02X} {pp:02X} 0{lowNibble:X} 0{highNibble:X} F7",
+  "notes": "zz=0x18+inst0. low/high nibble order per MIDI.org thread."
+}

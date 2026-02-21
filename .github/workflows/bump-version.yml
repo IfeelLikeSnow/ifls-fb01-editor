@@ -1,0 +1,46 @@
+name: Bump version (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "New version (e.g. 0.2.0)"
+        required: true
+      create_tag:
+        description: "Also create and push git tag vX.Y.Z"
+        required: true
+        default: "true"
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Bump version in files
+        run: |
+          python tools/bump_version.py --repo . --version "${{ inputs.version }}"
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.xml reaper/Scripts/IFLS_Workbench/Workbench/FB01/Editor/IFLS_FB01_SoundEditor.lua CHANGELOG.md || true
+          git commit -m "chore(release): bump version to ${{ inputs.version }}" || echo "Nothing to commit"
+          git push
+
+      - name: Create and push tag
+        if: ${{ inputs.create_tag == 'true' }}
+        run: |
+          git tag "v${{ inputs.version }}" -m "v${{ inputs.version }}"
+          git push origin "v${{ inputs.version }}"

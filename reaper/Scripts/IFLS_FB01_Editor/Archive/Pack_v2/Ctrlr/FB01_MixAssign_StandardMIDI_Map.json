@@ -1,0 +1,13 @@
+{
+  "panel_name": "Yamaha FB-01 Mix/Assign (Standard MIDI Starter)",
+  "midi": {
+    "volume_cc": 7,
+    "pan_cc": 10,
+    "expression_cc": 11,
+    "mod_cc": 1,
+    "sustain_cc": 64,
+    "program_change": true,
+    "pitch_bend": true
+  },
+  "notes": "Use in Ctrlr as mapping reference. For SysEx voice editing, add a SysEx engine (System Channel + Instrument)."
+}

@@ -1,0 +1,599 @@
+These are patches originally created for the DX-21 by some anonymous person or persons.  I have converted them for use on the FB-01 using Martin Tarenskeen's FB_CNVRT program for the AtariST.  So a big thanks to him for that very useful program!  The files were originally dated January 22, 1998  (uh.... and it looks like I needed to set the date & time on the AtariST emulator, as they're now dated with the year 2032).
+
+The original patch list is as follows
+
+
+ DX   DX
+ 21   27 - patch name 
+
+
+File: 1.SYX
+
+A 1    1 - FENDERBASS
+A 2    2 - HARP 1    
+A 3    3 - SOLAR WIND
+A 4    4 - VISITERS  
+A 5    5 - FM SWEEP  
+A 6    6 - ELEC.PIANO
+A 7    7 - HAMMOND B3
+A 8    8 - FLUTE PAD 
+A 9    9 - TECHNOBASS
+A10   10 - FM SWELL  
+A11   11 - VOYAGER   
+A12   12 - NEW AGE  1
+A13   13 - TWINKLE * 
+A14   14 - 2HAND LEAD
+A15   15 - VISITORS 2
+A16   16 - TOM TOM   
+B 1   17 - FM SWEEP 3
+B 2   18 - FANTASY   
+B 3   19 - STRATA 2  
+B 4   20 - ELFIN HARP
+B 5   21 - SNARE     
+B 6   22 - OCEAN SURF
+B 7   23 - LIKEMBE   
+B 8   24 - VIBES     
+
+
+
+
+File: 2.SYX
+
+A 1    1 - BRASS LEAD
+A 2    2 - VISITERS 3
+A 3    3 - TECHNODRUM
+A 4    4 - SOUR PAD  
+A 5    5 - YOWW !!   
+A 6    6 - CONGADRUM 
+A 7    7 - FM SWEEP 2
+A 8    8 - ANALOGLEAD
+A 9    9 - WINDCHIME 
+A10   10 - ORCH.PERC 
+A11   11 - OBOE      
+A12   12 - SWEEP LEAD
+A13   13 - HI PASS   
+A14   14 - STEELDRUM 
+A15   15 - BONANG    
+A16   16 - BC HARP   
+B 1   17 - FAST LEAD 
+B 2   18 - CROTALES  
+B 3   19 - SYNTHFLUTE
+B 4   20 - VIBRAPHONE
+B 5   21 - KENONG    
+B 6   22 - GLOOMY    
+B 7   23 - CZ SWEEP  
+B 8   24 - STAR SONG
+
+
+
+File: 3.SYX
+
+A 1    1 - MARIMBA   
+A 2    2 - NASAL LEAD
+A 3    3 - INDUSTBASS
+A 4    4 - STEELDRUM 
+A 5    5 - PERC. FX  
+A 6    6 - PERC.FX 2 
+A 7    7 - PERC.FX 3 
+A 8    8 - MOOG BASS 
+A 9    9 - BOTTLE BLO
+A10   10 - TAM TAM 2 
+A11   11 - INDUSBASS2
+A12   12 - TR-SNARE  
+A13   13 - MULT-FORM 
+A14   14 - RIDE 1    
+A15   15 - RIDE 2    
+A16   16 - UDU 2     
+B 1   17 - TR-KICK   
+B 2   18 - DRIPPY 2  
+B 3   19 - MOOG BASS3
+B 4   20 - COW BELL  
+B 5   21 - COW BELL 2
+B 6   22 - SYNTHTOM 2
+B 7   23 - ALIEN HIT 
+B 8   24 - FX-2      
+
+
+
+
+File: 4.SYX
+
+A 1    1 - ANA.BRASS 
+A 2    2 - SLOW LEAD 
+A 3    3 - FLASH     
+A 4    4 - DARK PAD  
+A 5    5 - TR-TOM    
+A 6    6 - FX        
+A 7    7 - TUBULAR   
+A 8    8 - BLASTERSYN
+A 9    9 - DRIPPY    
+A10   10 - TR-KICK 2 
+A11   11 - SYNTH TOM 
+A12   12 - METAL BASS
+A13   13 - PERC.FX 4 
+A14   14 - SNARE     
+A15   15 - DRUM SQUEK
+A16   16 - TAM TAM   
+B 1   17 - MOOG BASS2
+B 2   18 - TR-KICK 3 
+B 3   19 - LIKEMBE 2 
+B 4   20 - MOOG BASS4
+B 5   21 - TABLA     
+B 6   22 - TABLA 2   
+B 7   23 - UDU       
+B 8   24 - RIDE 3
+
+
+
+File: 5.SYX
+
+A 1    1 - SYNERGY   
+A 2    2 - PHAZEDBUZZ
+A 3    3 - SYNERGY 2 
+A 4    4 - PIPE ORGAN
+A 5    5 - ACCORDIAN 
+A 6    6 - ACCORDIAN2
+A 7    7 - LOWEND    
+A 8    8 - OKTOBEFEST
+A 9    9 - QUARTET   
+A10   10 - FM BRASS  
+A11   11 - LOWEND 2  
+A12   12 - SOLO VOICE
+A13   13 - CRYOGENIS 
+A14   14 - SYN DIST  
+A15   15 - PLEXITONE 
+A16   16 - FM BRASS 2
+B 1   17 - VOCODER 2 
+B 2   18 - BRASSWIND 
+B 3   19 - HARM ATTAK
+B 4   20 - SOLOVOICE2
+B 5   21 - BASS PAD  
+B 6   22 - BRITELEAD 
+B 7   23 - FM BASS   
+B 8   24 - 8-BITSAMP2
+
+
+
+
+File: 6.SYX
+
+A 1    1 - SPARKLE   
+A 2    2 - FANTAX    
+A 3    3 - VIBE PAD  
+A 4    4 - PIANO PAD 
+A 5    5 - BRASTRING 
+A 6    6 - CLARAFLUTE
+A 7    7 - DARKNESS  
+A 8    8 - Z-PLANE   
+A 9    9 - SOLOSWEEP 
+A10   10 - DARKLEAD  
+A11   11 - DUET      
+A12   12 - VOCODER 1 
+A13   13 - BACKDROP  
+A14   14 - K1 BRASS  
+A15   15 - VOCODER 3 
+A16   16 - POLKA!!!!!
+B 1   17 - PERC.BRASS
+B 2   18 - BOWED FM  
+B 3   19 - SPONGY    
+B 4   20 - LOWEND 3  
+B 5   21 - FM BRASS 3
+B 6   22 - 8-BIT SAMP
+B 7   23 - SOLO RESON
+B 8   24 - FRETLESS
+
+
+
+File: 7.SYX
+
+A 1    1 - PEAVY     
+A 2    2 - CELTICHARP
+A 3    3 - STOPS IN  
+A 4    4 - FAREACHES 
+A 5    5 - VIBRAFOAM 
+A 6    6 - DIGITAL   
+A 7    7 - HIPASSFILT
+A 8    8 - CHURCHKEYS
+A 9    9 - FM BASS   
+A10   10 - ALT BASS 2
+A11   11 - ANA PAD   
+A12   12 - BASSLIKE  
+A13   13 - LOWPASBAS2
+A14   14 - PSS       
+A15   15 - THICK     
+A16   16 - LEAD SYNTH
+B 1   17 - MUTETRUMP 
+B 2   18 - GRUNGE 3  
+B 3   19 - LOW ORCH.
+B 4   20 - JAZZ BASS 
+B 5   21 - CARLOSLEAD
+B 6   22 - SYN HIT   
+B 7   23 - TRUMPETEER
+B 8   24 - LOWLEAD  2
+
+
+
+
+File: 8.SYX
+
+A 1    1 - PLEXISLAP 
+A 2    2 - ANA BASS  
+A 3    3 - RAW SOLO  
+A 4    4 - FUNKY     
+A 5    5 - HT-BASS   
+A 6    6 - PLEXITONE 
+A 7    7 - BOTTOMS UP
+A 8    8 - LOW LEAD  
+A 9    9 - ALT BASS  
+A10   10 - LOWPASBASS
+A11   11 - MYSIC HORN
+A12   12 - HT-BASS 2 
+A13   13 - SCRATCH   
+A14   14 - FRETED    
+A15   15 - TECHNO!!!!
+A16   16 - BASSLIKE2 
+B 1   17 - COCKTALES 
+B 2   18 - GRUNGE    
+B 3   19 - GRUNGE 2  
+B 4   20 - PICCILO   
+B 5   21 - WANNABE   
+B 6   22 - TUBA      
+B 7   23 - LEAD GUITR
+B 8   24 - FAIRYTALE
+
+
+
+File: 9.SYX
+
+A 1    1 - SYNTHCYCLE
+A 2    2 - ARP ODESSY
+A 3    3 - MILDTONE  
+A 4    4 - MEMORIES..
+A 5    5 - 3 CHIMES  
+A 6    6 - FUZZYGRUZZ
+A 7    7 - ESSENCE   
+A 8    8 - GUIT HARMS
+A 9    9 - BRASSY    
+A10   10 - METALPHONE
+A11   11 - BASSY     
+A12   12 - BRONZE    
+A13   13 - LEADBEAMER
+A14   14 - XTRACT    
+A15   15 - LEAD AXE  
+A16   16 - BABY,BABY 
+B 1   17 - CP-70     
+B 2   18 - ORGANISM  
+B 3   19 - VOCALWAVE 
+B 4   20 - ADDITPIANO
+B 5   21 - RESONANCE 
+B 6   22 - CHAMBER   
+B 7   23 - RHODES 2  
+B 8   24 - HRPSIWAVE 
+
+
+
+
+File: 10.SYX
+
+A 1    1 - REED      
+A 2    2 - BLIND MICE
+A 3    3 - CHIMES    
+A 4    4 - WINTERGLAS
+A 5    5 - XYLOTONE  
+A 6    6 - RHODES 1  
+A 7    7 - B3        
+A 8    8 - FLASHBACK 
+A 9    9 - LOOK OUT!!
+A10   10 - BELLAPHONE
+A11   11 - OB FLUTE  
+A12   12 - ROTOBASS  
+A13   13 - BUZZONSOLO
+A14   14 - CYBERBASS 
+A15   15 - CYBERBASS2
+A16   16 - SWIRLY    
+B 1   17 - THE DOORS 
+B 2   18 - RHODES 3  
+B 3   19 - ADDIPIANO2
+B 4   20 - KOTO BASS 
+B 5   21 - ESSENCE 2 
+B 6   22 - 2 CHIMES  
+B 7   23 - IRON      
+B 8   24 - FRETLASYN
+
+
+
+File: 11.SYX
+
+A 1    1 - FANTASY 3 
+A 2    2 - HORNBLOCK 
+A 3    3 - PHASE LEAD
+A 4    4 - TROMBONE  
+A 5    5 - SQUARELEAD
+A 6    6 - PEACE!!!!!
+A 7    7 - DX-7 KEYS 
+A 8    8 - TRUMPET   
+A 9    9 - OBERHIEM  
+A10   10 - MARINE PAD
+A11   11 - HI FMBRASS
+A12   12 - PULSECODE 
+A13   13 - BELL AIR  
+A14   14 - PSS-170   
+A15   15 - BRASSBELL2
+A16   16 - WATERYBELL
+B 1   17 - OB-1 PAD  
+B 2   18 - FLUTE     
+B 3   19 - KIMONO    
+B 4   20 - PAN PIPE  
+B 5   21 - MATRIX PAD
+B 6   22 - HUMAN+    
+B 7   23 - FLUTE 2   
+B 8   24 - WATERDRAM2
+
+
+
+
+File: 12.SYX
+
+A 1    1 - FLUTE PAD 
+A 2    2 - BRASSBASS 
+A 3    3 - SPARKLER  
+A 4    4 - SYNTH VIBE
+A 5    5 - SAW PAD   
+A 6    6 - BRASS SEC.
+A 7    7 - WATERDRAMA
+A 8    8 - PERC.BRASS
+A 9    9 - DING DONG 
+A10   10 - XYLIMBA   
+A11   11 - 4-OP FLUTE
+A12   12 - UPRIGHT   
+A13   13 - BRASSBELL 
+A14   14 - 4-POLE RES
+A15   15 - MR.SANDMAN
+A16   16 - AIR GUITAR
+B 1   17 - MAHLER    
+B 2   18 - BLOW BY   
+B 3   19 - CATHEDRAL 
+B 4   20 - OCARINA   
+B 5   21 - SYNTHCHORD
+B 6   22 - GONGWIND  
+B 7   23 - SWIRLY PAD
+B 8   24 - LOWFMBRASS
+
+
+
+
+File: 13.SYX
+
+A 1    1 - ROCKORGAN 
+A 2    2 - SYNTHVOICE
+A 3    3 - OSC.SYNC 2
+A 4    4 - COMBO ORG.
+A 5    5 - NEY FLUTE 
+A 6    6 - PULSEWIDTH
+A 7    7 - JAZZ LEAD 
+A 8    8 - SHOFAR    
+A 9    9 - SYN VOICE2
+A10   10 - WARM PAD  
+A11   11 - POLY PAD  
+A12   12 - PERC.LEAD 
+A13   13 - GOBLINS   
+A14   14 - TROGLIDYTE
+A15   15 - LEADGUITAR
+A16   16 - PSS-170 2 
+B 1   17 - SWEEPING4P
+B 2   18 - FAIRY DUST
+B 3   19 - OSC.SYNC 4
+B 4   20 - ADDY SWEEP
+B 5   21 - SPACE PAD 
+B 6   22 - MODULEMODE
+B 7   23 - SCI-FI 2  
+B 8   24 - PSS-470   
+
+
+
+
+File: 14.SYX
+
+A 1    1 - STRANGER  
+A 2    2 - OSC.SYNC  
+A 3    3 - SYNOPHONE 
+A 4    4 - CITYBRASS 
+A 5    5 - GAMELAN   
+A 6    6 - WATERPHONE
+A 7    7 - BASSANERO 
+A 8    8 - TECHNICS  
+A 9    9 - ANDES     
+A10   10 - WOOD PAD  
+A11   11 - SPACEPAD 2
+A12   12 - SQUARELEAD
+A13   13 - OSC.SYNC 3
+A14   14 - IRON FIST 
+A15   15 - CHORDDY   
+A16   16 - CAN DANCE 
+B 1   17 - ORGANICAL 
+B 2   18 - DISTORTION
+B 3   19 - SHANAI    
+B 4   20 - COMPU LEAD
+B 5   21 - COMBO ORG2
+B 6   22 - RAINFOREST
+B 7   23 - SCI-FI    
+B 8   24 - ACOUSTIC
+
+
+
+
+File: 15.SYX
+
+A 1    1 - ELECTRICIY
+A 2    2 - HAMMONDVOX
+A 3    3 - IMPENDING 
+A 4    4 - HARP 3    
+A 5    5 - FM LEADER 
+A 6    6 - SOUNDTRACK
+A 7    7 - MOOG SAW  
+A 8    8 - GUITARVIBE
+A 9    9 - WAGNER    
+A10   10 - RESO BASS 
+A11   11 - FENDER 2  
+A12   12 - DXED LOWER
+A13   13 - BOWED HELL
+A14   14 - HIMALAYA  
+A15   15 - SPRINKLE  
+A16   16 - HEAVY PAD 
+B 1   17 - EMULATOR 1
+B 2   18 - MUTANT    
+B 3   19 - VOCODER 3 
+B 4   20 - FUNK LEAD 
+B 5   21 - ACEOF BASS
+B 6   22 - NORTHERNER
+B 7   23 - OVATION 4S
+B 8   24 - DX SQUARED
+
+
+
+
+File: 16.SYX
+
+A 1    1 - MOOG PULSE
+A 2    2 - ACEOFBASS2
+A 3    3 - HEAVYPAD2 
+A 4    4 - INYOURFACE
+A 5    5 - IRON AGE  
+A 6    6 - PEGGED    
+A 7    7 - FRENCHHORN
+A 8    8 - HEAVYPAD3 
+A 9    9 - SOUTHERNER
+A10   10 - 4/6STRING 
+A11   11 - MIRAGESAMP
+A12   12 - SHARP LEAD
+A13   13 - CELTICHARP
+A14   14 - RESO BELL 
+A15   15 - SYNTHDIST*
+A16   16 - 6 STRING  
+B 1   17 - RHODESBASS
+B 2   18 - KRAFTWERK 
+B 3   19 - CLAVIER   
+B 4   20 - VOCODER 2 
+B 5   21 - REZNORANDA
+B 6   22 - BONANGERAM
+B 7   23 - CHIFFER   
+B 8   24 - CHIMER
+
+
+
+
+File: 17.SYX
+
+A 1    1 - ORCH.PAD  
+A 2    2 - HARMOVOC. 
+A 3    3 - STOOGES   
+A 4    4 - MOVIE PAD 
+A 5    5 - ORCH.PAD2 
+A 6    6 - CRYSTALINE
+A 7    7 - FANTASTEEL
+A 8    8 - KOTO      
+A 9    9 - BACKER    
+A10   10 - ELEC.PNO 3
+A11   11 - YAMAHA CP 
+A12   12 - HOLY ARCH 
+A13   13 - TABERNACLE
+A14   14 - DAYTIME 2 
+A15   15 - JUPITER   
+A16   16 - KITARO    
+B 1   17 - 9FOOTGRAND
+B 2   18 - ELEC.PNO 1
+B 3   19 - BALLPARK  
+B 4   20 - COMBAPHONE
+B 5   21 - PROTEUPLEX
+B 6   22 - ASTRAL    
+B 7   23 - FUJINARO  
+B 8   24 - LASERBLAST
+
+
+
+
+File: 18.SYX
+
+A 1    1 - CHIMESYNTH
+A 2    2 - BABY GRAND
+A 3    3 - SYNTHBOARD
+A 4    4 - DINGALLING
+A 5    5 - ALIENSHORE
+A 6    6 - WOOD BASS 
+A 7    7 - UPRIGHT   
+A 8    8 - KOTO 2    
+A 9    9 - MONOLOG   
+A10   10 - ELEC.PNO 2
+A11   11 - Z-PLANESYN
+A12   12 - ELEC.PNO 4
+A13   13 - WURLITZER1
+A14   14 - WURLITZER2
+A15   15 - ACID RAIN 
+A16   16 - KEYZER    
+B 1   17 - OLD PERC. 
+B 2   18 - SERVICES  
+B 3   19 - MACHINE FX
+B 4   20 - DAYTIME   
+B 5   21 - OB-8 SWEEP
+B 6   22 - CHURCH 2  
+B 7   23 - HI/LOWPASS
+B 8   24 - DIGISYNBAS
+
+
+
+File: 19.SYX
+
+A 1    1 - 2HAND LEAD
+A 2    2 - SOLAR WIND
+A 3    3 - STRATA 2  
+A 4    4 - SCOTLAND  
+A 5    5 - PERU      
+A 6    6 - IMP.PAD   
+A 7    7 - ECHOVIOLIN
+A 8    8 - IMP.PAD2  
+A 9    9 - BELLVOICE 
+A10   10 - KAZOO !!! 
+A11   11 - BELLONG   
+A12   12 - HI PASS   
+A13   13 - K1-BASS   
+A14   14 - SQUAREBASS
+A15   15 - CZ LEAD   
+A16   16 - DIST.LEAD 
+B 1   17 - CT-656 #5 
+B 2   18 - DISTLEAD2 
+B 3   19 - SYN DIST. 
+B 4   20 - E.L.P.    
+B 5   21 - NAZCA     
+B 6   22 - 8BIT PIPE 
+B 7   23 - JAY'S Wind
+B 8   24 - !*)$%@!!  
+
+
+
+
+File: 20.SYX
+
+A 1    1 - ELFIN HARP
+A 2    2 - STRATA    
+A 3    3 - TR-CYMBLES
+A 4    4 - K4-BASS   
+A 5    5 - CROTALINA 
+A 6    6 - FILT.BRASS
+A 7    7 - OCEAN SURF
+A 8    8 - DEEP VOICE
+A 9    9 - STAR SONG 
+A10   10 - IMP.PAD3  
+A11   11 - FM 4STRING
+A12   12 - DX TEMPO  
+A13   13 - INDIA     
+A14   14 - TWINKLE * 
+A15   15 - METALSWELL
+A16   16 - WOODWIND  
+B 1   17 - FAIRYFLUTE
+B 2   18 - CAVERN    
+B 3   19 - PSS-47O   
+B 4   20 - VOYAGER   
+B 5   21 - ORGANDREAM
+B 6   22 - TEHCNOWIND
+B 7   23 - 16BIT PIPE
+B 8   24 - DIGI RAIN 

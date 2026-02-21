@@ -1,0 +1,690 @@
+{
+  "generated_utc": "2026-02-05T05:13:41Z",
+  "count": 76,
+  "items": [
+    {
+      "path": "Patches/1-20/1.syx",
+      "bytes": 6363,
+      "sha1": "c6dd82fc9b961686a143c681aa24cb2b4f2e6525",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "1"
+    },
+    {
+      "path": "Patches/1-20/10.syx",
+      "bytes": 6363,
+      "sha1": "57b5fa4dd82fa36e5b23fe113cc50fab717e2b76",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "10"
+    },
+    {
+      "path": "Patches/1-20/11.syx",
+      "bytes": 6363,
+      "sha1": "dc80d849ab454053c47feb013faa29c13447cf08",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "11"
+    },
+    {
+      "path": "Patches/1-20/12.syx",
+      "bytes": 6363,
+      "sha1": "59617fc864006139758eb01ce2a77e5ea986158f",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "12"
+    },
+    {
+      "path": "Patches/1-20/13.syx",
+      "bytes": 6363,
+      "sha1": "41163a99210916067b742e239d2cba180e25e76f",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "13"
+    },
+    {
+      "path": "Patches/1-20/14.syx",
+      "bytes": 6363,
+      "sha1": "39a798369cb21f1d0920c9914b016ecffb048f89",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "14"
+    },
+    {
+      "path": "Patches/1-20/15.syx",
+      "bytes": 6363,
+      "sha1": "d5be0030275f9837d6adfe6f1b87a2821c677308",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "15"
+    },
+    {
+      "path": "Patches/1-20/16.syx",
+      "bytes": 6363,
+      "sha1": "3790793c2604630594c939674b3532054904bca1",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "16"
+    },
+    {
+      "path": "Patches/1-20/17.syx",
+      "bytes": 6363,
+      "sha1": "31d415b719fe1fd1ddb7bfd667e26149ea1286c6",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "17"
+    },
+    {
+      "path": "Patches/1-20/18.syx",
+      "bytes": 6363,
+      "sha1": "69f1df5e11ad14923dc074e7c3f56c8a59d71de5",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "18"
+    },
+    {
+      "path": "Patches/1-20/19.syx",
+      "bytes": 6363,
+      "sha1": "68e69c7148002b50b06867d0cdbb6f5dcaccc545",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 01",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "19"
+    },
+    {
+      "path": "Patches/1-20/2.syx",
+      "bytes": 6363,
+      "sha1": "066ff81a74a1ef1ae2667c57ea1ffc6fabdc4f14",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 02",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "2"
+    },
+    {
+      "path": "Patches/1-20/20.syx",
+      "bytes": 6363,
+      "sha1": "04bf96ce8dd3d8194bd1c817dbd3f87e0d4ea9e2",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 02",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "20"
+    },
+    {
+      "path": "Patches/1-20/3.syx",
+      "bytes": 6363,
+      "sha1": "fceb71da65561607ee871d590e213bb70e56ec08",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 03",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "3"
+    },
+    {
+      "path": "Patches/1-20/4.syx",
+      "bytes": 6363,
+      "sha1": "b7f48cd0514255ad149696c497f3a0ad04a62d2c",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 04",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "4"
+    },
+    {
+      "path": "Patches/1-20/5.syx",
+      "bytes": 6363,
+      "sha1": "0d8d84333c38b4c1f1baeebb34c3898c8565991c",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 05",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "5"
+    },
+    {
+      "path": "Patches/1-20/6.syx",
+      "bytes": 6363,
+      "sha1": "10bc1573b6e87b81cfce0aea502dde1c6269e5ca",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 06",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "6"
+    },
+    {
+      "path": "Patches/1-20/7.syx",
+      "bytes": 6363,
+      "sha1": "175b2e661bcbbac33b909f10a8e231820278dbc1",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 07",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "7"
+    },
+    {
+      "path": "Patches/1-20/8.syx",
+      "bytes": 6363,
+      "sha1": "ecea3ebb757bebd4f17aca603ae8e09e59d63719",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 08",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "8"
+    },
+    {
+      "path": "Patches/1-20/9.syx",
+      "bytes": 6363,
+      "sha1": "919c6fed1a9d8dcb26a4d697d9a2215923eb1c14",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 09",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "1-20",
+      "name": "9"
+    },
+    {
+      "path": "Patches/fb01a_0/#AAA-AAA.syx",
+      "bytes": 6363,
+      "sha1": "7fb67af43514a686560704689ccd38dc88b1198e",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 39 F7",
+      "folder": "fb01a_0",
+      "name": "#AAA-AAA"
+    },
+    {
+      "path": "Patches/fb01a_0/#AAA-ACC.syx",
+      "bytes": 6363,
+      "sha1": "700094e01375f9bce62560e8d277090bdabf8bf7",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 47 F7",
+      "folder": "fb01a_0",
+      "name": "#AAA-ACC"
+    },
+    {
+      "path": "Patches/fb01a_0/#ACC-ANL.syx",
+      "bytes": 6363,
+      "sha1": "de04e675b2bc56db2e399f4fd3aa8ffcca93a730",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 12 F7",
+      "folder": "fb01a_0",
+      "name": "#ACC-ANL"
+    },
+    {
+      "path": "Patches/fb01a_0/#ANL-BAC.syx",
+      "bytes": 6363,
+      "sha1": "115f7b663586d060f0bfaa87af0eb2b00c200782",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 61 F7",
+      "folder": "fb01a_0",
+      "name": "#ANL-BAC"
+    },
+    {
+      "path": "Patches/fb01a_0/#BAC-BEA.syx",
+      "bytes": 6363,
+      "sha1": "fa5e277ebd8943954c9173d945e997117a08a590",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 5B F7",
+      "folder": "fb01a_0",
+      "name": "#BAC-BEA"
+    },
+    {
+      "path": "Patches/fb01a_0/#BEA-BOU.syx",
+      "bytes": 6363,
+      "sha1": "b801d67d6b7ca47963f9c7b0e57128f42b076a8d",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 07 F7",
+      "folder": "fb01a_0",
+      "name": "#BEA-BOU"
+    },
+    {
+      "path": "Patches/fb01a_0/#BOW-CAS.syx",
+      "bytes": 6363,
+      "sha1": "d75d9cd6bdc2c9894049204ee9ee938839a32f69",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 73 F7",
+      "folder": "fb01a_0",
+      "name": "#BOW-CAS"
+    },
+    {
+      "path": "Patches/fb01a_0/#CAT-CLA.syx",
+      "bytes": 6363,
+      "sha1": "ce4188eff3f992fc59fe497506c589d7ebe428a6",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 3B F7",
+      "folder": "fb01a_0",
+      "name": "#CAT-CLA"
+    },
+    {
+      "path": "Patches/fb01a_0/#CLA-DBL.syx",
+      "bytes": 6363,
+      "sha1": "58468b6bd684e97cf030041859c1ac2bc1cf1c2a",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 62 F7",
+      "folder": "fb01a_0",
+      "name": "#CLA-DBL"
+    },
+    {
+      "path": "Patches/fb01a_0/#DEE-EHO.syx",
+      "bytes": 6363,
+      "sha1": "140b5179cfb01aeec67ca2c61e8734b39cc92b10",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 75 F7",
+      "folder": "fb01a_0",
+      "name": "#DEE-EHO"
+    },
+    {
+      "path": "Patches/fb01a_0/#EHO-EPI.syx",
+      "bytes": 6363,
+      "sha1": "157c5dcc0e1d4eadf5cd14d2eb88c96607ab9dc3",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 00 F7",
+      "folder": "fb01a_0",
+      "name": "#EHO-EPI"
+    },
+    {
+      "path": "Patches/fb01a_0/#EPI-ETU.syx",
+      "bytes": 6363,
+      "sha1": "a73a104ef2cba97fa45ba59dd0a1a5d304e8b276",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 40 F7",
+      "folder": "fb01a_0",
+      "name": "#EPI-ETU"
+    },
+    {
+      "path": "Patches/fb01a_0/#EVE-FLU.syx",
+      "bytes": 6363,
+      "sha1": "82289d3ba890dd854df131268d9d2271efc705cd",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 18 F7",
+      "folder": "fb01a_0",
+      "name": "#EVE-FLU"
+    },
+    {
+      "path": "Patches/fb01a_0/#FLU-GON.syx",
+      "bytes": 6363,
+      "sha1": "760884d825a07655f9fbdaa511e82972aea0c0fd",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 11 F7",
+      "folder": "fb01a_0",
+      "name": "#FLU-GON"
+    },
+    {
+      "path": "Patches/fb01a_0/#GON-HAR.syx",
+      "bytes": 6363,
+      "sha1": "e66879220134fb2396689993c7b4418ec9831b0b",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 6E F7",
+      "folder": "fb01a_0",
+      "name": "#GON-HAR"
+    },
+    {
+      "path": "Patches/fb01a_0/#HAR-HOR.syx",
+      "bytes": 6363,
+      "sha1": "e64ca6c3672c99f967b1966a075c4a682e1073f3",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 23 F7",
+      "folder": "fb01a_0",
+      "name": "#HAR-HOR"
+    },
+    {
+      "path": "Patches/fb01a_0/#HOR-JLY.syx",
+      "bytes": 6363,
+      "sha1": "3392cc79e93703d6f8936552e105fe0812adc915",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 7D F7",
+      "folder": "fb01a_0",
+      "name": "#HOR-JLY"
+    },
+    {
+      "path": "Patches/fb01a_0/#JLY-LOR.syx",
+      "bytes": 6363,
+      "sha1": "8fcedceebb5de402479ab808a1589676c3fedaee",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 16 F7",
+      "folder": "fb01a_0",
+      "name": "#JLY-LOR"
+    },
+    {
+      "path": "Patches/fb01a_0/#LOW-MGO.syx",
+      "bytes": 6363,
+      "sha1": "43a8062edea90129b3d2d1a38be44ac0e49cc88a",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 6D F7",
+      "folder": "fb01a_0",
+      "name": "#LOW-MGO"
+    },
+    {
+      "path": "Patches/fb01a_0/#MIA-NRM.syx",
+      "bytes": 6363,
+      "sha1": "ef162c733d7727877f4aa04d76cc8858bf374792",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 6C F7",
+      "folder": "fb01a_0",
+      "name": "#MIA-NRM"
+    },
+    {
+      "path": "Patches/fb01a_0/#NRM-P'R.syx",
+      "bytes": 6363,
+      "sha1": "06af017d7e1ec3f0bb54612743f0f28674c8f58e",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 6C F7",
+      "folder": "fb01a_0",
+      "name": "#NRM-P'R"
+    },
+    {
+      "path": "Patches/fb01a_0/#P'S-PHA.syx",
+      "bytes": 6363,
+      "sha1": "1dd630998505a5f43152e9a62c67febb10975916",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 00 F7",
+      "folder": "fb01a_0",
+      "name": "#P'S-PHA"
+    },
+    {
+      "path": "Patches/fb01a_0/#PHO-PLU.syx",
+      "bytes": 6363,
+      "sha1": "90c53b3a8db07f4816afac0f132827cd04a353c2",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 5F F7",
+      "folder": "fb01a_0",
+      "name": "#PHO-PLU"
+    },
+    {
+      "path": "Patches/fb01a_0/#PLU-ROT.syx",
+      "bytes": 6363,
+      "sha1": "f2fb413f714b008ea6ed31ec729acd3cccb64be7",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 06 F7",
+      "folder": "fb01a_0",
+      "name": "#PLU-ROT"
+    },
+    {
+      "path": "Patches/fb01a_0/#RUF-SLA.syx",
+      "bytes": 6363,
+      "sha1": "282d432977c16dd0826d1113d47cedab7e5a0269",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 0F F7",
+      "folder": "fb01a_0",
+      "name": "#RUF-SLA"
+    },
+    {
+      "path": "Patches/fb01a_0/#SLA-SPA.syx",
+      "bytes": 6363,
+      "sha1": "a60d58ec02cbc3e8993c1e5dc1aa02fc88d02c12",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 4B F7",
+      "folder": "fb01a_0",
+      "name": "#SLA-SPA"
+    },
+    {
+      "path": "Patches/fb01a_0/#SPA-STL.syx",
+      "bytes": 6363,
+      "sha1": "c8a80576100ff6d6505c0048d5e73c3ffbe592cd",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 18 F7",
+      "folder": "fb01a_0",
+      "name": "#SPA-STL"
+    },
+    {
+      "path": "Patches/fb01a_0/#STO-SWI.syx",
+      "bytes": 6363,
+      "sha1": "1c3c378b76fd9a91a7ac1a0a8ac413135f379c63",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 5E F7",
+      "folder": "fb01a_0",
+      "name": "#STO-SWI"
+    },
+    {
+      "path": "Patches/fb01a_0/#SWI-SYN.syx",
+      "bytes": 6363,
+      "sha1": "71472139b36add427a33a8da1f6df8b7201ca043",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 70 F7",
+      "folder": "fb01a_0",
+      "name": "#SWI-SYN"
+    },
+    {
+      "path": "Patches/fb01a_0/#SYN-TEN.syx",
+      "bytes": 6363,
+      "sha1": "3ebd49fe8131ae407f578a05667e9517a9b22464",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 3B F7",
+      "folder": "fb01a_0",
+      "name": "#SYN-TEN"
+    },
+    {
+      "path": "Patches/fb01a_0/#THB-TRO.syx",
+      "bytes": 6363,
+      "sha1": "7ad7bfbd4019613964679714c61e10d93c6466df",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 3A F7",
+      "folder": "fb01a_0",
+      "name": "#THB-TRO"
+    },
+    {
+      "path": "Patches/fb01a_0/#TRP-VLN.syx",
+      "bytes": 6363,
+      "sha1": "71ef0802465d713b19fc8bab34eb8ec28d535ad3",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 31 F7",
+      "folder": "fb01a_0",
+      "name": "#TRP-VLN"
+    },
+    {
+      "path": "Patches/fb01a_0/#VLN-WBA.syx",
+      "bytes": 6363,
+      "sha1": "6cc3d1ada61a5ca47ddc877ac3f9d61d4948df07",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 00 F7",
+      "folder": "fb01a_0",
+      "name": "#VLN-WBA"
+    },
+    {
+      "path": "Patches/fb01a_0/#WBA-XYL.syx",
+      "bytes": 6363,
+      "sha1": "627e422d09f5ac6612a02bc0ec4b80d16c87b5eb",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 7C F7",
+      "folder": "fb01a_0",
+      "name": "#WBA-XYL"
+    },
+    {
+      "path": "Patches/fb01a_0/#XYL-ZZZ.syx",
+      "bytes": 6363,
+      "sha1": "ce04060dc1dea9f00c48046daefdce2da5749b5e",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0C",
+      "tail_hex": "00 00 00 00 00 00 00 00 00 F7",
+      "folder": "fb01a_0",
+      "name": "#XYL-ZZZ"
+    },
+    {
+      "path": "Patches/fb01a_0/$AAA-BAS.syx",
+      "bytes": 6363,
+      "sha1": "98f6827796b1c6ed73da8371ef99c57d7fbcd267",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 32 F7",
+      "folder": "fb01a_0",
+      "name": "$AAA-BAS"
+    },
+    {
+      "path": "Patches/fb01a_0/$BAS-BEL.syx",
+      "bytes": 6363,
+      "sha1": "f27e344991874df49b5c563ba6bf8a12023fab7b",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 71 F7",
+      "folder": "fb01a_0",
+      "name": "$BAS-BEL"
+    },
+    {
+      "path": "Patches/fb01a_0/$BEL-CLA.syx",
+      "bytes": 6363,
+      "sha1": "8953db1a769fada8db4d95ac6524433ea8c3b23b",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 03 F7",
+      "folder": "fb01a_0",
+      "name": "$BEL-CLA"
+    },
+    {
+      "path": "Patches/fb01a_0/$CLE-DBG.syx",
+      "bytes": 6363,
+      "sha1": "18b5207d9d914e57762d998a505eba594ce43495",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 3B F7",
+      "folder": "fb01a_0",
+      "name": "$CLE-DBG"
+    },
+    {
+      "path": "Patches/fb01a_0/$DBH-E'P.syx",
+      "bytes": 6363,
+      "sha1": "1f30d32255db13dd732354343d529a05577f0650",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 5C F7",
+      "folder": "fb01a_0",
+      "name": "$DBH-E'P"
+    },
+    {
+      "path": "Patches/fb01a_0/$E'P-ELE.syx",
+      "bytes": 6363,
+      "sha1": "7ea50558887b5eea6e32aa1c1681de8dd0a3ee54",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 69 F7",
+      "folder": "fb01a_0",
+      "name": "$E'P-ELE"
+    },
+    {
+      "path": "Patches/fb01a_0/$ELE-FLU.syx",
+      "bytes": 6363,
+      "sha1": "fd6587043c3fe76abd5727b482ade598a1c6ac1b",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 2B F7",
+      "folder": "fb01a_0",
+      "name": "$ELE-FLU"
+    },
+    {
+      "path": "Patches/fb01a_0/$FLU-HEA.syx",
+      "bytes": 6363,
+      "sha1": "942f07c6dae6f8420501906c537b5dce1e8e4298",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 29 F7",
+      "folder": "fb01a_0",
+      "name": "$FLU-HEA"
+    },
+    {
+      "path": "Patches/fb01a_0/$HEA-INS.syx",
+      "bytes": 6363,
+      "sha1": "e4894b18b5c551a386e4d1d1e3be1dd47ef64cda",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 21 F7",
+      "folder": "fb01a_0",
+      "name": "$HEA-INS"
+    },
+    {
+      "path": "Patches/fb01a_0/$INS-LEA.syx",
+      "bytes": 6363,
+      "sha1": "07cf2d890aa2b7cb2ec11b78fb0996e7da6c7286",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 1C F7",
+      "folder": "fb01a_0",
+      "name": "$INS-LEA"
+    },
+    {
+      "path": "Patches/fb01a_0/$LEA-MOR.syx",
+      "bytes": 6363,
+      "sha1": "441aaed20e579ec47bb6efcb6e28a46e25365af2",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 00 F7",
+      "folder": "fb01a_0",
+      "name": "$LEA-MOR"
+    },
+    {
+      "path": "Patches/fb01a_0/$MOR-ORC.syx",
+      "bytes": 6363,
+      "sha1": "795fabf59c07b2dd9d980a5dce559a8e89c5ef4a",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 37 F7",
+      "folder": "fb01a_0",
+      "name": "$MOR-ORC"
+    },
+    {
+      "path": "Patches/fb01a_0/$ORC-PRO.syx",
+      "bytes": 6363,
+      "sha1": "eb90bcb4c915c227ad1cadacd1835b1ad1398547",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 15 F7",
+      "folder": "fb01a_0",
+      "name": "$ORC-PRO"
+    },
+    {
+      "path": "Patches/fb01a_0/$PER-RAN.syx",
+      "bytes": 6363,
+      "sha1": "a3133bf97b658680418634b8e7211b5253bda745",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 25 F7",
+      "folder": "fb01a_0",
+      "name": "$PER-RAN"
+    },
+    {
+      "path": "Patches/fb01a_0/$RAN-SEA.syx",
+      "bytes": 6363,
+      "sha1": "724db35d005db9d6049a160a747e6842abf2967c",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 72 F7",
+      "folder": "fb01a_0",
+      "name": "$RAN-SEA"
+    },
+    {
+      "path": "Patches/fb01a_0/$SFH-SLA.syx",
+      "bytes": 6363,
+      "sha1": "1e9828a577cb3ed4fae4aceedcb24547f5af3553",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 40 F7",
+      "folder": "fb01a_0",
+      "name": "$SFH-SLA"
+    },
+    {
+      "path": "Patches/fb01a_0/$SLO-STU.syx",
+      "bytes": 6363,
+      "sha1": "c59137f00b4967fb8392f05fde2d1333a593f57f",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 51 F7",
+      "folder": "fb01a_0",
+      "name": "$SLO-STU"
+    },
+    {
+      "path": "Patches/fb01a_0/$STU-TEM.syx",
+      "bytes": 6363,
+      "sha1": "07b9567d6781def9639511f6c28e2869b141e39b",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 02 F7",
+      "folder": "fb01a_0",
+      "name": "$STU-TEM"
+    },
+    {
+      "path": "Patches/fb01a_0/$TIG-UNT.syx",
+      "bytes": 6363,
+      "sha1": "2fa4f537981a21f1a6f59d0d5fa3f957062c1d1b",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 05 F7",
+      "folder": "fb01a_0",
+      "name": "$TIG-UNT"
+    },
+    {
+      "path": "Patches/fb01a_0/$UNT-WHO.syx",
+      "bytes": 6363,
+      "sha1": "71f14d77236e3c87558a9c0be85f04f0cfc62fd4",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 57 F7",
+      "folder": "fb01a_0",
+      "name": "$UNT-WHO"
+    },
+    {
+      "path": "Patches/fb01a_0/$WIL-ZEP.syx",
+      "bytes": 6363,
+      "sha1": "3338d3b128fafcdf75037148bcf10acfe2818007",
+      "header_hex": "F0 43 75 00 00 00 00 00 40 0D",
+      "tail_hex": "00 00 00 00 00 00 00 00 00 F7",
+      "folder": "fb01a_0",
+      "name": "$WIL-ZEP"
+    }
+  ]
+}

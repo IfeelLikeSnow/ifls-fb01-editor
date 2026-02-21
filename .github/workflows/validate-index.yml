@@ -1,0 +1,37 @@
+name: Validate ReaPack index.xml
+
+on:
+  push:
+    paths:
+      - "index.xml"
+      - ".github/workflows/validate-index.yml"
+  pull_request:
+    paths:
+      - "index.xml"
+      - ".github/workflows/validate-index.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: XML well-formed check
+      - uses: ChristophWurst/xmllint-action@v1
+        with:
+          xml-file: index.xml
+
+      - name: Reject empty <source> URLs
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, sys
+          txt = pathlib.Path("index.xml").read_text(encoding="utf-8", errors="replace")
+          bad1 = re.findall(r'<source\b[^>]*/>', txt)
+          bad2 = re.findall(r'<source\b[^>]*>\s*</source>', txt)
+          if bad1 or bad2:
+              print("Invalid ReaPack index: empty <source> URL")
+              for m in (bad1 + bad2)[:20]:
+                  print(m)
+              sys.exit(1)
+          print("OK: no empty <source> tags")
+          PY

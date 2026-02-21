@@ -1,0 +1,433 @@
+{
+  "meta": {
+    "version": "0.90.0",
+    "source": "Derived from open-source FB-01 editors (juhakivekas/LasDesu)",
+    "value_encoding": "voice/operator use nibble-split 8-bit; instrument uses 7-bit"
+  },
+  "voice_params": [
+    {
+      "id": 0,
+      "name": "Algorithm",
+      "param": 0,
+      "min": 0,
+      "max": 7,
+      "group": "VOICE",
+      "schema_key": "voice:algorithm"
+    },
+    {
+      "id": 1,
+      "name": "Feedback",
+      "param": 1,
+      "min": 0,
+      "max": 6,
+      "group": "VOICE",
+      "schema_key": "voice:feedback"
+    },
+    {
+      "id": 2,
+      "name": "Transpose",
+      "param": 2,
+      "schema_key": "voice:transpose"
+    },
+    {
+      "id": 3,
+      "name": "Poly/Mono",
+      "param": 3,
+      "schema_key": "voice:poly_mode"
+    },
+    {
+      "id": 4,
+      "name": "Portamento",
+      "param": 4,
+      "schema_key": "voice:portamento_time"
+    },
+    {
+      "id": 5,
+      "name": "Pitch Bend Range",
+      "param": 5,
+      "schema_key": "voice:pitchbend_range"
+    },
+    {
+      "id": 6,
+      "name": "Controller Set",
+      "param": 6,
+      "schema_key": "voice:controller_set"
+    },
+    {
+      "id": 7,
+      "name": "LFO Speed",
+      "param": 7,
+      "schema_key": "voice:lfo_speed"
+    },
+    {
+      "id": 8,
+      "name": "LFO Wave",
+      "param": 8,
+      "schema_key": "voice:lfo_wave"
+    },
+    {
+      "id": 9,
+      "name": "LFO Load",
+      "param": 9,
+      "schema_key": "voice:lfo_load"
+    },
+    {
+      "id": 10,
+      "name": "LFO Key Sync",
+      "param": 10,
+      "schema_key": "voice:lfo_key_sync"
+    },
+    {
+      "id": 11,
+      "name": "LFO AMD",
+      "param": 11,
+      "schema_key": "voice:lfo_amd"
+    },
+    {
+      "id": 12,
+      "name": "LFO AMS",
+      "param": 12,
+      "schema_key": "voice:lfo_ams"
+    },
+    {
+      "id": 13,
+      "name": "LFO PMD",
+      "param": 13,
+      "schema_key": "voice:lfo_pmd"
+    },
+    {
+      "id": 14,
+      "name": "LFO PMS",
+      "param": 14,
+      "schema_key": "voice:lfo_pms"
+    },
+    {
+      "id": 15,
+      "name": "Enable OP1",
+      "param": 15,
+      "schema_key": "voice:op1_enable"
+    },
+    {
+      "id": 16,
+      "name": "Enable OP2",
+      "param": 16,
+      "schema_key": "voice:op2_enable"
+    },
+    {
+      "id": 17,
+      "name": "Enable OP3",
+      "param": 17,
+      "schema_key": "voice:op3_enable"
+    },
+    {
+      "id": 18,
+      "name": "Enable OP4",
+      "param": 18,
+      "schema_key": "voice:op4_enable"
+    }
+  ],
+  "operator_params": [
+    {
+      "id": 0,
+      "name": "Volume",
+      "param": 0,
+      "min": 0,
+      "max": 127,
+      "group": "LEVEL",
+      "schema_key": "operator:volume"
+    },
+    {
+      "id": 1,
+      "name": "Level Curb",
+      "param": 1,
+      "min": 0,
+      "max": 15,
+      "group": "SCALE",
+      "schema_key": "operator:level_curb"
+    },
+    {
+      "id": 2,
+      "name": "Level Velocity",
+      "param": 2,
+      "min": 0,
+      "max": 7,
+      "group": "SCALE",
+      "schema_key": "operator:level_velocity"
+    },
+    {
+      "id": 3,
+      "name": "Level Depth",
+      "param": 3,
+      "min": 0,
+      "max": 15,
+      "group": "SCALE",
+      "schema_key": "operator:level_depth"
+    },
+    {
+      "id": 4,
+      "name": "Adjust",
+      "param": 4,
+      "min": 0,
+      "max": 15,
+      "group": "LEVEL",
+      "schema_key": "operator:adjust"
+    },
+    {
+      "id": 5,
+      "name": "Fine",
+      "param": 5,
+      "min": 0,
+      "max": 99,
+      "group": "FREQ",
+      "schema_key": "operator:fine"
+    },
+    {
+      "id": 6,
+      "name": "Multiple",
+      "param": 6,
+      "min": 0,
+      "max": 15,
+      "group": "FREQ",
+      "schema_key": "operator:multiple"
+    },
+    {
+      "id": 7,
+      "name": "Rate Depth",
+      "param": 7,
+      "min": 0,
+      "max": 15,
+      "group": "SCALE",
+      "schema_key": "operator:rate_depth"
+    },
+    {
+      "id": 8,
+      "name": "Attack",
+      "param": 8,
+      "min": 0,
+      "max": 31,
+      "group": "EG",
+      "schema_key": "operator:attack"
+    },
+    {
+      "id": 9,
+      "name": "Modulator",
+      "param": 9,
+      "min": 0,
+      "max": 1,
+      "group": "MOD",
+      "schema_key": "operator:modulator"
+    },
+    {
+      "id": 10,
+      "name": "Attack Velocity",
+      "param": 10,
+      "schema_key": "operator:attack_velocity"
+    },
+    {
+      "id": 11,
+      "name": "Decay 1",
+      "param": 11,
+      "min": 0,
+      "max": 31,
+      "group": "EG",
+      "schema_key": "operator:decay1"
+    },
+    {
+      "id": 12,
+      "name": "Coarse",
+      "param": 12,
+      "min": 0,
+      "max": 15,
+      "group": "FREQ",
+      "schema_key": "operator:coarse"
+    },
+    {
+      "id": 13,
+      "name": "Decay 2",
+      "param": 13,
+      "min": 0,
+      "max": 31,
+      "group": "EG",
+      "schema_key": "operator:decay2"
+    },
+    {
+      "id": 14,
+      "name": "Sustain",
+      "param": 14,
+      "min": 0,
+      "max": 15,
+      "group": "EG",
+      "schema_key": "operator:sustain"
+    },
+    {
+      "id": 15,
+      "name": "Release",
+      "param": 15,
+      "min": 0,
+      "max": 15,
+      "group": "EG",
+      "schema_key": "operator:release"
+    }
+  ],
+  "instrument_params": [
+    {
+      "name": "Notes",
+      "param": 0,
+      "min": 1,
+      "max": 8,
+      "default": 1,
+      "schema_key": "instrument:notes",
+      "ui": "slider_int"
+    },
+    {
+      "id": 0,
+      "name": "MIDI Channel",
+      "param": 1,
+      "schema_key": "instrument:midi_channel"
+    },
+    {
+      "id": 1,
+      "name": "Lowest Note",
+      "param": 2,
+      "schema_key": "instrument:lowest_note"
+    },
+    {
+      "id": 2,
+      "name": "Highest Note",
+      "param": 3,
+      "schema_key": "instrument:highest_note"
+    },
+    {
+      "id": 3,
+      "name": "Bank",
+      "param": 4,
+      "schema_key": "instrument:bank"
+    },
+    {
+      "id": 4,
+      "name": "Voice",
+      "param": 5,
+      "schema_key": "instrument:voice"
+    },
+    {
+      "id": 5,
+      "name": "Volume",
+      "param": 6,
+      "schema_key": "instrument:output_level"
+    },
+    {
+      "id": 6,
+      "name": "Pan",
+      "param": 7,
+      "schema_key": "instrument:pan"
+    },
+    {
+      "id": 7,
+      "name": "Detune",
+      "param": 8,
+      "schema_key": "instrument:detune",
+      "ui_min": -64,
+      "ui_max": 63,
+      "encoding": "s7",
+      "min": 0,
+      "max": 127,
+      "default": 0
+    },
+    {
+      "id": 8,
+      "name": "Transpose",
+      "param": 9,
+      "schema_key": "instrument:note_shift",
+      "ui_min": -2,
+      "ui_max": 2,
+      "encoding": "offset",
+      "offset": 2,
+      "min": 0,
+      "max": 4,
+      "default": 2
+    },
+    {
+      "id": 9,
+      "name": "Output Assign",
+      "param": 10,
+      "schema_key": "instrument:output_assign"
+    },
+    {
+      "id": 10,
+      "name": "LFO Enable",
+      "param": 11,
+      "schema_key": "instrument:lfo_enable"
+    },
+    {
+      "id": 11,
+      "name": "Portamento Enable",
+      "param": 12,
+      "schema_key": "instrument:portamento_enable"
+    },
+    {
+      "id": 12,
+      "name": "Pitch Bend Enable",
+      "param": 13,
+      "schema_key": "instrument:pitchbend_enable"
+    },
+    {
+      "id": 13,
+      "name": "Aftertouch Enable",
+      "param": 14,
+      "schema_key": "instrument:aftertouch_enable"
+    },
+    {
+      "id": 14,
+      "name": "Mod Wheel Enable",
+      "param": 15,
+      "schema_key": "instrument:mod_wheel_enable"
+    }
+  ],
+  "config_params": [
+    {
+      "name": "SysEx Channel",
+      "param": 0,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "schema_key": "config:sys_channel",
+      "ui": "slider_int"
+    },
+    {
+      "name": "Memory Protect",
+      "param": 1,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "schema_key": "config:memory_protect",
+      "ui": "checkbox"
+    },
+    {
+      "name": "Config Number",
+      "param": 2,
+      "min": 0,
+      "max": 20,
+      "default": 0,
+      "schema_key": "config:config_number",
+      "ui": "slider_int"
+    },
+    {
+      "name": "Master Detune",
+      "param": 3,
+      "min": 0,
+      "max": 127,
+      "default": 64,
+      "schema_key": "config:master_detune",
+      "ui": "slider_int"
+    },
+    {
+      "name": "Master Volume",
+      "param": 4,
+      "min": 0,
+      "max": 127,
+      "default": 100,
+      "schema_key": "config:master_volume",
+      "ui": "slider_int"
+    }
+  ]
+}

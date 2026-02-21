@@ -1,0 +1,42 @@
+<TRACK
+NAME "FB-01 Rack"
+NOTES "FB-01 RACK (1824c)\nMIDI: Parts send CH 1..8 to 1824c MIDI OUT.\nAudio: Set return inputs.\n"
+FOLDER 1
+>
+<TRACK
+NAME "FB-01 Part 1 (MIDI Ch 1)"
+MIDIHWOUT 1
+>
+<TRACK
+NAME "FB-01 Part 2 (MIDI Ch 2)"
+MIDIHWOUT 2
+>
+<TRACK
+NAME "FB-01 Part 3 (MIDI Ch 3)"
+MIDIHWOUT 3
+>
+<TRACK
+NAME "FB-01 Part 4 (MIDI Ch 4)"
+MIDIHWOUT 4
+>
+<TRACK
+NAME "FB-01 Part 5 (MIDI Ch 5)"
+MIDIHWOUT 5
+>
+<TRACK
+NAME "FB-01 Part 6 (MIDI Ch 6)"
+MIDIHWOUT 6
+>
+<TRACK
+NAME "FB-01 Part 7 (MIDI Ch 7)"
+MIDIHWOUT 7
+>
+<TRACK
+NAME "FB-01 Part 8 (MIDI Ch 8)"
+MIDIHWOUT 8
+>
+<TRACK
+NAME "FB-01 Audio Return (set inputs)"
+NOTES "Set your 1824c line inputs used for FB-01 L/R"
+FOLDER -1
+>
