@@ -1,155 +1,132 @@
 param(
   [Parameter(Mandatory=$true)][string]$Owner,
   [Parameter(Mandatory=$true)][string]$Repo,
-  [Parameter(Mandatory=$false)][string]$Branch = "main",
+  [string]$Branch = "main",
   [Parameter(Mandatory=$true)][string]$Version,
-  [Parameter(Mandatory=$false)][string]$IndexName = "IFLS FB-01 Editor",
-  [Parameter(Mandatory=$false)][string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-
-  # Source roots inside repo (relative to RepoRoot)
-  [Parameter(Mandatory=$false)][string]$ScriptsRootRel = "reaper/Scripts/IFLS_FB01_Editor",
-  [Parameter(Mandatory=$false)][string]$EffectsRootRel = "reaper/Effects/IFLS",
-  [Parameter(Mandatory=$false)][string]$MenuSetsRootRel = "MenuSets",
-
-  # Destination roots inside REAPER resource path
-  [Parameter(Mandatory=$false)][string]$DestScriptsRoot = "Scripts/IFLS FB-01 Editor",
-  [Parameter(Mandatory=$false)][string]$DestEffectsRoot = "Effects/IFLS",
-
-  # Optional: also copy JSFX into Scripts tree (so users find it alongside docs)
-  [switch]$AlsoCopyEffectsIntoScripts
+  [string]$CategoryName = "Editors",
+  [string]$RepoDisplayName = "IFLS FB-01 Editor",
+  [string]$Desc = "Yamaha FB-01 editor & librarian for REAPER (ReaImGui).",
+  [string]$RepoRoot
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-function IsoNowUtcSeconds() {
-  return (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
-}
-
-function UrlEncodePath([string]$p) {
-  $p = $p -replace "\\","/"
-  $segments = $p -split "/"
-  ($segments | ForEach-Object { [System.Uri]::EscapeDataString($_) }) -join "/"
-}
-
-function GetFiles([string]$absRoot) {
-  if (!(Test-Path $absRoot)) { return @() }
-  Get-ChildItem -Path $absRoot -Recurse -File | Where-Object {
-    $_.FullName -notmatch "\\__MACOSX\\" -and
-    $_.Name -ne ".DS_Store" -and
-    $_.Name -notmatch "^\\._"
+function Get-RepoRoot {
+  param([string]$Provided)
+  if (-not [string]::IsNullOrWhiteSpace($Provided)) {
+    return (Resolve-Path $Provided).Path
   }
+  # Avoid $PSScriptRoot in param defaults (can be empty in Windows PowerShell)
+  $scriptPath = $PSCommandPath
+  if ([string]::IsNullOrWhiteSpace($scriptPath)) {
+    # fallback
+    return (Resolve-Path ".").Path
+  }
+  $scriptDir = Split-Path -Parent $scriptPath
+  return (Resolve-Path (Join-Path $scriptDir "..")).Path
 }
 
-function GuessType([string]$path) {
-  $ext = [System.IO.Path]::GetExtension($path).ToLowerInvariant()
-  if ($ext -in @(".lua",".eel",".py")) { return "script" }
-  if ($ext -in @(".jsfx",".jsfx-inc")) { return "effect" }
-  if ($ext -in @(".reapermenu")) { return "data" }
-  if ($ext -in @(".rtracktemplate")) { return "data" }
-  return "data"
+function Escape-Xml([string]$s) {
+  if ($null -eq $s) { return "" }
+  return $s.Replace("&","&amp;").Replace("<","&lt;").Replace(">","&gt;").Replace('"',"&quot;").Replace("'","&apos;")
 }
 
-$repoRootAbs = (Resolve-Path $RepoRoot).Path
-$scriptsRootAbs = Join-Path $repoRootAbs ($ScriptsRootRel -replace "/","\" )
-$effectsRootAbs = Join-Path $repoRootAbs ($EffectsRootRel -replace "/","\" )
-$menuSetsRootAbs = Join-Path $repoRootAbs ($MenuSetsRootRel -replace "/","\" )
-
-if (!(Test-Path $scriptsRootAbs)) { throw "Missing scripts root: $scriptsRootAbs (set -ScriptsRootRel accordingly)" }
-
-$scriptFiles = GetFiles $scriptsRootAbs
-$effectFiles = GetFiles $effectsRootAbs
-$menuFiles   = GetFiles $menuSetsRootAbs
-
-$time = IsoNowUtcSeconds
-$indexPath = Join-Path $repoRootAbs "index.xml"
-
-# XML writer (UTF-8 no BOM)
-$settings = New-Object System.Xml.XmlWriterSettings
-$settings.Indent = $true
-$settings.Encoding = New-Object System.Text.UTF8Encoding($false)
-$writer = [System.Xml.XmlWriter]::Create($indexPath, $settings)
-
-$writer.WriteStartDocument()
-$writer.WriteStartElement("index")
-$writer.WriteAttributeString("version","1")
-$writer.WriteAttributeString("name",$IndexName)
-$writer.WriteAttributeString("generated-by","ifls index generator (flat paths)")
-
-# Single category + single multi-file package
-$writer.WriteStartElement("category")
-$writer.WriteAttributeString("name","Editors")
-
-$writer.WriteStartElement("reapack")
-$writer.WriteAttributeString("name","IFLS FB-01 Editor")
-$writer.WriteAttributeString("type","script")
-$writer.WriteAttributeString("desc","Yamaha FB-01 editor & librarian for REAPER (ReaImGui).")
-
-$writer.WriteStartElement("version")
-$writer.WriteAttributeString("name",$Version)
-$writer.WriteAttributeString("time",$time)
-
-function WriteSource([string]$destFile, [string]$type, [string]$repoRelPath, [bool]$isMain=$false) {
-  $repoRelPath = $repoRelPath -replace "\\","/"
-  $url = "https://raw.githubusercontent.com/$Owner/$Repo/$Branch/" + (UrlEncodePath $repoRelPath)
-  $writer.WriteStartElement("source")
-  $writer.WriteAttributeString("file",$destFile)
-  $writer.WriteAttributeString("platform","all")
-  $writer.WriteAttributeString("type",$type)
-  if ($isMain) { $writer.WriteAttributeString("main","main") }
-  $writer.WriteString($url)
-  $writer.WriteEndElement()
+function Encode-PathForUrl([string]$p) {
+  # p uses / separators
+  $parts = $p -split '/'
+  $enc = $parts | ForEach-Object { [System.Uri]::EscapeDataString($_) }
+  return ($enc -join '/')
 }
 
-# Scripts -> Scripts/IFLS FB-01 Editor/<same tree>
+$RepoRoot = Get-RepoRoot -Provided $RepoRoot
+
+$reaperDir = Join-Path $RepoRoot "reaper"
+if (!(Test-Path $reaperDir)) { throw "Expected folder not found: $reaperDir" }
+
+# Find the "inner root" containing Editor/Actions etc by locating IFLS_FB01_SoundEditor.lua
+$editorFile = Get-ChildItem -Path $reaperDir -Recurse -File -Filter "IFLS_FB01_SoundEditor.lua" -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($null -eq $editorFile) {
+  # fallback: common path
+  $fallback = Join-Path $reaperDir "Scripts\IFLS FB-01 Editor"
+  if (Test-Path $fallback) {
+    $scriptRoot = (Resolve-Path $fallback).Path
+  } else {
+    throw "Could not locate IFLS_FB01_SoundEditor.lua under '$reaperDir'. Cannot determine script root."
+  }
+} else {
+  # Editor file is typically ...\<Root>\Editor\IFLS_FB01_SoundEditor.lua
+  $scriptRoot = $editorFile.Directory.Parent.FullName
+}
+
+if (!(Test-Path $scriptRoot)) { throw "Script root not found: $scriptRoot" }
+
+# Collect script/data files from scriptRoot
+$scriptFiles = Get-ChildItem -Path $scriptRoot -Recurse -File | Where-Object { $_.Name -notmatch '^\.' }
+
+# Collect MenuSets (any .ReaperMenu under reaper/)
+$menuFiles = Get-ChildItem -Path $reaperDir -Recurse -File -Filter "*.ReaperMenu" -ErrorAction SilentlyContinue
+
+# Collect JSFX under reaper/Effects (optional)
+$fxFiles = Get-ChildItem -Path (Join-Path $reaperDir "Effects") -Recurse -File -Filter "*.jsfx" -ErrorAction SilentlyContinue
+
+$time = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+# Build XML
+$lines = New-Object System.Collections.Generic.List[string]
+$lines.Add('<?xml version="1.0" encoding="UTF-8"?>')
+$lines.Add('<index version="1" generated-by="generate_index_flat.ps1" name="' + (Escape-Xml $RepoDisplayName) + '">')
+$lines.Add('  <category name="' + (Escape-Xml $CategoryName) + '">')
+$lines.Add('    <reapack name="' + (Escape-Xml $RepoDisplayName) + '" type="script" desc="' + (Escape-Xml $Desc) + '">')
+$lines.Add('      <version name="' + (Escape-Xml $Version) + '" time="' + $time + '">')
+
+function Add-Source {
+  param(
+    [string]$TargetFile,
+    [string]$RelPathFromRepoRoot,
+    [string]$Type
+  )
+  $relUrlPath = ($RelPathFromRepoRoot -replace '\\','/')
+  $relUrlPath = Encode-PathForUrl $relUrlPath
+  $url = "https://raw.githubusercontent.com/$Owner/$Repo/$Branch/$relUrlPath"
+  $lines.Add('        <source file="' + (Escape-Xml $TargetFile) + '" platform="all" type="' + (Escape-Xml $Type) + '">' + (Escape-Xml $url) + '</source>')
+}
+
+# Scripts/data under Scripts/IFLS FB-01 Editor/...
 foreach ($f in $scriptFiles) {
-  $rel = $f.FullName.Substring($scriptsRootAbs.Length).TrimStart("\","/")
-  $relSlash = $rel -replace "\\","/"
-  $dest = "$DestScriptsRoot/$relSlash"
-  $repoRel = "$ScriptsRootRel/$relSlash"
-  $type = GuessType $f.Name
+  $rel = $f.FullName.Substring($scriptRoot.Length).TrimStart('\','/')
+  $target = ("Scripts/IFLS FB-01 Editor/" + ($rel -replace '\\','/'))
+  $repoRel = (Resolve-Path $f.FullName).Path.Substring($RepoRoot.Length).TrimStart('\','/')
+  $ext = $f.Extension.ToLowerInvariant()
+  $type = if ($ext -in @(".lua",".eel",".py")) { "script" } else { "data" }
+  Add-Source -TargetFile $target -RelPathFromRepoRoot $repoRel -Type $type
+}
 
-  # Mark a few scripts as "main" so they can appear as actions after restart (optional)
-  $isMain = $false
-  if ($type -eq "script") {
-    if ($relSlash -match '^Actions/' -or $relSlash -match '^Editor/IFLS_FB01_SoundEditor\.lua$' -or $relSlash -match '^IFLS_FB01_Register_Actions\.lua$') {
-      $isMain = $true
-    }
-  }
-  WriteSource -destFile $dest -type $type -repoRelPath $repoRel -isMain:$isMain
+# MenuSets -> MenuSets/<filename>
+foreach ($f in $menuFiles) {
+  $target = ("MenuSets/" + $f.Name)
+  $repoRel = (Resolve-Path $f.FullName).Path.Substring($RepoRoot.Length).TrimStart('\','/')
+  Add-Source -TargetFile $target -RelPathFromRepoRoot $repoRel -Type "data"
 }
 
 # Effects -> Effects/IFLS/<...>
-foreach ($f in $effectFiles) {
-  $rel = $f.FullName.Substring($effectsRootAbs.Length).TrimStart("\","/")
-  $relSlash = $rel -replace "\\","/"
-  $dest = "$DestEffectsRoot/$relSlash"
-  $repoRel = "$EffectsRootRel/$relSlash"
-  $type = GuessType $f.Name
-  WriteSource -destFile $dest -type $type -repoRelPath $repoRel -isMain:$false
-
-  if ($AlsoCopyEffectsIntoScripts) {
-    $dest2 = "$DestScriptsRoot/Editors/Effects/IFLS/$relSlash"
-    WriteSource -destFile $dest2 -type $type -repoRelPath $repoRel -isMain:$false
-  }
+foreach ($f in $fxFiles) {
+  # preserve subpath below Effects\
+  $effectsRoot = (Resolve-Path (Join-Path $reaperDir "Effects")).Path
+  $rel = $f.FullName.Substring($effectsRoot.Length).TrimStart('\','/')
+  $target = ("Effects/" + ($rel -replace '\\','/'))
+  $repoRel = (Resolve-Path $f.FullName).Path.Substring($RepoRoot.Length).TrimStart('\','/')
+  Add-Source -TargetFile $target -RelPathFromRepoRoot $repoRel -Type "effect"
 }
 
-# MenuSets -> MenuSets/<...> (RESOURCE ROOT)
-foreach ($f in $menuFiles) {
-  $rel = $f.FullName.Substring($menuSetsRootAbs.Length).TrimStart("\","/")
-  $relSlash = $rel -replace "\\","/"
-  $dest = "MenuSets/$relSlash"
-  $repoRel = "$MenuSetsRootRel/$relSlash"
-  WriteSource -destFile $dest -type "data" -repoRelPath $repoRel -isMain:$false
-}
+$lines.Add('      </version>')
+$lines.Add('    </reapack>')
+$lines.Add('  </category>')
+$lines.Add('</index>')
 
-$writer.WriteEndElement() # version
-$writer.WriteEndElement() # reapack
-$writer.WriteEndElement() # category
-$writer.WriteEndElement() # index
-$writer.WriteEndDocument()
-$writer.Flush()
-$writer.Close()
+$indexPath = Join-Path $RepoRoot "index.xml"
+[System.IO.File]::WriteAllLines($indexPath, $lines, (New-Object System.Text.UTF8Encoding($false)))
 
-Write-Host "Wrote index.xml: $indexPath"
-Write-Host "Scripts: $($scriptFiles.Count)  Effects: $($effectFiles.Count)  MenuSets: $($menuFiles.Count)"
+Write-Host "Wrote index.xml -> $indexPath"
+Write-Host "Script root: $scriptRoot"
+Write-Host ("Sources: {0} scripts/data, {1} menusets, {2} effects" -f $scriptFiles.Count, $menuFiles.Count, $fxFiles.Count)
