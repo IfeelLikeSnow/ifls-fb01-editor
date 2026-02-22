@@ -593,6 +593,12 @@ local function _send_test_note(chan, note, vel, on)
   if AUTOCAL and AUTOCAL.midi_use_hw and AUTOCAL.midi_out_idx ~= nil then dest = 16 + tonumber(AUTOCAL.midi_out_idx) end
   r.StuffMIDIMessage(dest, status, n, v)
 end
+  r.StuffMIDIMessage(dest, status, note or 60, vel or 100)
+ends to REAPER's MIDI outputs; for hardware, ensure your MIDI track routes notes to the FB-01.
+  local status = (on and 0x90 or 0x80) + (chan or 0)
+  r.StuffMIDIMessage(0, status, note or 60, vel or 100)
+end
+
 local function _autocal_reset()
   AUTOCAL.running=false
   AUTOCAL.phase="idle"
@@ -835,7 +841,18 @@ if AUTOCAL.phase == "prep_algo" then
     AUTOCAL._next_after_pause = nil
     return
   end
-if AUTOCAL.phase == "pause" then
+    local db = _peak_hold_db(tr, false)
+    AUTOCAL.last_db = db
+    local audible = (db >= (AUTOCAL.thresh_db or -45.0))
+    AUTOCAL.audible[AUTOCAL.algo][AUTOCAL.op] = audible
+    _log_add("algo", string.format("AutoCal algo %d op %d peak=%.1f dB -> %s", AUTOCAL.algo, AUTOCAL.op, db, audible and "AUDIBLE" or "no"))
+    AUTOCAL.status = string.format("Algo %d / OP %d: peak %.1f dB (%s)", AUTOCAL.algo, AUTOCAL.op, db, audible and "AUDIBLE" or "no")
+    AUTOCAL.t0 = now
+    AUTOCAL.phase = "pause"
+    return
+  end
+
+  if AUTOCAL.phase == "pause" then
     if (now - AUTOCAL.t0) < (AUTOCAL.pause or 0.35) then return end
 
     if AUTOCAL._next_after_pause then
@@ -860,7 +877,8 @@ if AUTOCAL.phase == "pause" then
     end
     return
   end
-if AUTOCAL.phase == "finish" then
+
+  if AUTOCAL.phase == "finish" then
     AUTOCAL.status = "AutoCal finished. Applying carriers + exporting report..."
     -- apply per algo
     for a=0,7 do
@@ -1109,10 +1127,10 @@ local function _install_ifls_toolbar(toolbar_num)
   local msg =
     "Toolbar file created:\n\n" .. file ..
     "\n\nNext steps:\n" ..
-    "1) Options ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Customize menus/toolbarsÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦\n" ..
+    "1) Options â†’ Customize menus/toolbarsâ€¦\n" ..
     "2) Choose 'Floating toolbar "..tostring(toolbar_num).."' in the dropdown\n" ..
-    "3) Click ImportÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ and pick the file above\n\n" ..
-    "Tip: You can rightÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Ëœclick any toolbar area ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Open toolbar ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Floating toolbar "..tostring(toolbar_num)
+    "3) Click Importâ€¦ and pick the file above\n\n" ..
+    "Tip: You can rightâ€‘click any toolbar area â†’ Open toolbar â†’ Floating toolbar "..tostring(toolbar_num)
 
   r.ShowMessageBox(msg, "IFLS FB-01 Toolbar installed", 0)
 
@@ -1809,7 +1827,7 @@ local function _maybe_reassemble_bank_dump()
   return false
 end
 -- =========================
--- PHASE 19 ROUNDTRIP: ExportÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢SendÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢DumpÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢Compare for Bank, ROM-safety, Write-to-instrument workflow
+-- PHASE 19 ROUNDTRIP: Exportâ†’Sendâ†’Dumpâ†’Compare for Bank, ROM-safety, Write-to-instrument workflow
 -- =========================
 local function _is_rom_bank(bank_no)
   -- Practical safety default: treat 1..2 as writable (RAM), 3..7 as ROM
@@ -5966,7 +5984,7 @@ local function operator_panel()
   end
 
   if wide then
-    r.ImGui_Text(ctx, "All Ops (Matrix) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ EG + TL/MUL")
+    r.ImGui_Text(ctx, "All Ops (Matrix) â€“ EG + TL/MUL")
     r.ImGui_Separator(ctx)
 
   -- Schema-driven Config UI (Phase 24): edits a local config shadow table; send/apply uses existing config send pipeline.
@@ -6157,7 +6175,7 @@ local function operator_panel()
       local changed
       changed, LIBRARY.folder = r.ImGui_InputText(ctx, "Library folder", LIBRARY.folder or "")
       if changed then _ext_set("library_folder", LIBRARY.folder or "") end
-      if r.ImGui_Button(ctx, "Scan Folder ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Build Index", 220, 0) then
+      if r.ImGui_Button(ctx, "Scan Folder â†’ Build Index", 220, 0) then
         local idx, err = _library_scan_folder(LIBRARY.folder)
         if idx then
           LIBRARY.index = idx
@@ -7596,7 +7614,7 @@ if r.ImGui_CollapsingHeader(ctx, "Single Voice Import / Apply", 0) then
     end
 
     if sv_verify_pending then
-      r.ImGui_Text(ctx, "Verify: waiting for inst voice dumpÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦")
+      r.ImGui_Text(ctx, "Verify: waiting for inst voice dumpâ€¦")
     end
     if sv_verify_result then
       if sv_verify_result.ok then
