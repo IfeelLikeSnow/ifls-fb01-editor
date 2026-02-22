@@ -136,7 +136,7 @@ fmd:write("\n## Sample (first 20)\n\n")
 fmd:write("| file | bytes | msgs | type | bankId |\n|---|---:|---:|---|---|\n")
 for i=1, math.min(#rows, 20) do
   local r0=rows[i]
-  fmd:write(string.format("| %s | %d | %d | %s | %s |\n", r0[1]:gsub("|","\|"), r0[2], r0[3], r0[4], r0[5]))
+  fmd:write(string.format("| %s | %d | %d | %s | %s |\n", r0[1]:gsub("|","\\\\|"), r0[2], r0[3], r0[4], r0[5]))
 end
 fmd:close()
 
