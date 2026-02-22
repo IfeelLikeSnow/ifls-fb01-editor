@@ -7,7 +7,6 @@
 --   - GitHub/ReaPack-ready packaging.
 --
 
-
 -- =========================
 -- PHASE 33/34 SELECT RESULT: select by entry (source/file/voice) and optional auto-audition
 -- =========================
@@ -86,10 +85,7 @@ local function _queue_prev()
   LIBRARY.queue_pos = pos
   return _select_result_entry(LIBRARY.queue_list[pos])
 end
-  LIBRARY.queue_pos = (LIBRARY.queue_pos - 2) % #LIBRARY.queue_list + 1
-  return _select_result_entry(LIBRARY.queue_list[LIBRARY.queue_pos])
-end
-
+  
 
 -- Phase 30: send a 64-byte voice block as InstVoice SysEx (temporary audition)
 local function send_inst_voice_temp(voice_block64, inst0)
@@ -163,7 +159,6 @@ end
   return true
 end
 
-
 -- =========================
 -- PHASE 29 ALGORITHM MAP: Carrier/Modulator map per algorithm + session bundle export/import
 -- =========================
@@ -179,13 +174,6 @@ ALGO_MAP = {
   [6] = { carriers={1}, mods={2,3,4} },
   [7] = { carriers={1,2}, mods={3,4} },
 }
-
-
-
-
-
-
-
 
 -- =========================
 -- PHASE 36.7 TONEFIX CHAIN + AUTOCAL-ONLY MODE + NOISE-AWARE TREBLE
@@ -508,8 +496,6 @@ local function _autocal_ensure_tracks()
     _tonefix_set_enabled(aud_tr, en)
   end
 
-
-
   
   -- MIDI HW out: optional (only if a single or selected device is known)
   if AUTOCAL and AUTOCAL.midi_set_track_hwout and AUTOCAL.midi_out_idx ~= nil then
@@ -607,12 +593,6 @@ local function _send_test_note(chan, note, vel, on)
   if AUTOCAL and AUTOCAL.midi_use_hw and AUTOCAL.midi_out_idx ~= nil then dest = 16 + tonumber(AUTOCAL.midi_out_idx) end
   r.StuffMIDIMessage(dest, status, n, v)
 end
-  r.StuffMIDIMessage(dest, status, note or 60, vel or 100)
-ends to REAPER's MIDI outputs; for hardware, ensure your MIDI track routes notes to the FB-01.
-  local status = (on and 0x90 or 0x80) + (chan or 0)
-  r.StuffMIDIMessage(0, status, note or 60, vel or 100)
-end
-
 local function _autocal_reset()
   AUTOCAL.running=false
   AUTOCAL.phase="idle"
@@ -681,7 +661,6 @@ local function _autocal_step()
     changed2, v2 = r.ImGui_InputDouble(ctx, "Near dB", AUTOCAL.near_db or 3.0, 0.5, 1.0, "%.1f")
     if changed2 then AUTOCAL.near_db = math.max(0.5, math.min(12.0, v2)) end
 
-
   if not AUTOCAL.running then return end
   local now = r.time_precise()
   local tr = _find_track_by_name(AUTOCAL.track_name)
@@ -690,7 +669,6 @@ local function _autocal_step()
     AUTOCAL.running=false
     return
   end
-
 
   if AUTOCAL.phase == "baseline" and (AUTOCAL.baseline_db == nil) then
     _peak_hold_db(tr, true) -- clear
@@ -1013,7 +991,6 @@ local function _algo_export_calibration_report()
   return path
 end
 
-
 -- Phase 31: Algorithm map overrides (persist)
 local function _algo_load_overrides()
   local s = _ext_get("fb01_algo_map_override", "")
@@ -1071,9 +1048,6 @@ end
 local function _bundle_path(ts)
   return _lib_exports_dir() .. "/SessionBundle_" .. (ts or os.date("%Y%m%d_%H%M%S"))
 end
-
-
-
 
 -- =========================
 -- PHASE 38 TOOLBAR INSTALL (Pro Option C)
@@ -1162,10 +1136,10 @@ local function _install_ifls_toolbar(toolbar_num)
   local msg =
     "Toolbar file created:\n\n" .. file ..
     "\n\nNext steps:\n" ..
-    "1) Options → Customize menus/toolbars…\n" ..
+    "1) Options â†’ Customize menus/toolbarsâ€¦\n" ..
     "2) Choose 'Floating toolbar "..tostring(toolbar_num).."' in the dropdown\n" ..
-    "3) Click Import… and pick the file above\n\n" ..
-    "Tip: You can right‑click any toolbar area → Open toolbar → Floating toolbar "..tostring(toolbar_num)
+    "3) Click Importâ€¦ and pick the file above\n\n" ..
+    "Tip: You can rightâ€‘click any toolbar area â†’ Open toolbar â†’ Floating toolbar "..tostring(toolbar_num)
 
   r.ShowMessageBox(msg, "IFLS FB-01 Toolbar installed", 0)
 
@@ -1288,7 +1262,6 @@ local function _log_export()
   return path
 end
 
-
 local function _write_bytes_file(path, bytes_tbl)
   local f = io.open(path, "wb"); if not f then return false end
   for i=1,#bytes_tbl do f:write(string.char(bytes_tbl[i] & 0xFF)) end
@@ -1389,7 +1362,6 @@ local function _apply_musical_shaping(style, voice_vals, op_vals)
     end
   end
 end
-
 
 -- Phase 11.4: Param-based verify report export (JSON/TXT)
 local function _get_project_dir()
@@ -1732,10 +1704,6 @@ end
 
 local r = reaper
 
-
-
-
-
 local root = r.GetResourcePath() .. "/Scripts/IFLS FB-01 Editor"
 local BUNDLED_ARCHIVES_DIR = root .. "/Library/Archives"
 
@@ -1782,16 +1750,7 @@ local LIBRARY = {
   bulk_tag_edit = "",
   cache = nil,
 
-
   batch_map = nil,
-
-
-
-
-
-
-
-
 
 -- =========================
 -- PHASE 20 STABILITY: Real-time pacing (time_precise), multipart bank dump assist, compare progress, per-interface profiles
@@ -1877,7 +1836,7 @@ local function _maybe_reassemble_bank_dump()
   return false
 end
 -- =========================
--- PHASE 19 ROUNDTRIP: Export→Send→Dump→Compare for Bank, ROM-safety, Write-to-instrument workflow
+-- PHASE 19 ROUNDTRIP: Exportâ†’Sendâ†’Dumpâ†’Compare for Bank, ROM-safety, Write-to-instrument workflow
 -- =========================
 local function _is_rom_bank(bank_no)
   -- Practical safety default: treat 1..2 as writable (RAM), 3..7 as ROM
@@ -2159,8 +2118,6 @@ local function _export_bank_bulk_syx(mode)
   return true, path
 end
 
-
-
 -- =========================
 -- PHASE 27 CONFIG MULTI: Multi-instrument tabs + write safety + config randomizer + cfg_* canonical mapping
 -- =========================
@@ -2232,7 +2189,6 @@ local function _ensure_capture_track_and_route()
   end
   return tr
 end
-
 
 -- =========================
 -- PHASE 30 TOOLTIP + AUDITION: Schema tooltips + A/B voice audition + algo debug
@@ -2559,7 +2515,6 @@ local function _lib_export_preset_pack_from_selected()
     r.ImGui_Text(ctx, ("Queue: %d items, pos %d"):format(#LIBRARY.queue_list, LIBRARY.queue_pos or 0))
   end
 
-
     local n = _queue_build_from_current_results(false)
     LIBRARY.status = "Queue built: " .. tostring(n) .. " items"
   end
@@ -2572,7 +2527,6 @@ local function _lib_export_preset_pack_from_selected()
     LIBRARY.scan_last_t = 0
   end
 
-
     LIBRARY.scan_mode = "favorites"
     LIBRARY.scan_list = nil
     LIBRARY.scan_pos = 0
@@ -2584,7 +2538,6 @@ local function _lib_export_preset_pack_from_selected()
     LIBRARY.scan_enabled = false
     _log_add("scan", "Stop Scan")
   end
-
 
   r.ImGui_Text(ctx, "Session Bundle (Phase 29)")
   if not BUNDLE then BUNDLE = { include_meta=true, include_tags=true, include_cache=false, include_config_slot=true, config_slot=0, include_voice=true } end
@@ -3172,7 +3125,6 @@ local function _decode_bank_any(bytes)
   return nil, "decode failed"
 end
 
-
 local function _library_refresh_sources()
   LIBRARY.sources = {}
   -- 1) bundled archives
@@ -3314,7 +3266,6 @@ local VERIFY = {
   result = nil,          -- {ok=bool, diffs=int, err=str, backend=str}
 }
 
-
 -- Phase 10.2: Native Bulk Verify Harness (send native bulk -> auto capture dump -> compare -> export report)
 NATIVE_HARNESS = {
   active = false,
@@ -3445,8 +3396,6 @@ local function native_harness_on_verify_done()
     r.ShowConsoleMsg("Native verify report save failed\n")
   end
 end
-
-
 
 local 
 -- =========================
@@ -3633,7 +3582,6 @@ local function verify_clear()
   VERIFY.target = nil
   VERIFY.result = nil
 end
-
 
 local function _diff_voice64(a, b)
   local diffs = 0
@@ -3914,8 +3862,6 @@ end
 
 end
 
-
-
 -- =========================
 -- Phase 3: One-button Auto-Capture (record -> request -> stop -> verify)
 -- =========================
@@ -3990,8 +3936,6 @@ local function _capture_cleanup_items(mode)
   end
   CAPTURE.cleanup_done = true
 end
-
-
 
 local function _capture_find_or_create_track()
   local proj = 0
@@ -4081,7 +4025,6 @@ local function _capture_get_last_sysex_on_track(tr)
   return nil
 end
 
-
 -- Phase 9: collect ALL SysEx events from newly created capture items (TAKE backend)
 local function _collect_sysex_from_items(items)
   local out = {}
@@ -4135,7 +4078,6 @@ local function capture_start(kind, send_fn, opts)
   CAPTURE.new_items = nil
   CAPTURE.active = true
 
-
 local tr, idx = _capture_find_or_create_track()
 -- snapshot existing items for cleanup diff
 CAPTURE.pre_item_guids = {}
@@ -4157,7 +4099,6 @@ CAPTURE.track, CAPTURE.track_idx = tr, idx
 
   if send_fn then send_fn() end
 end
-
 
 local function capture_tick()
   -- Phase 5: process bank send queue (selected voices)
@@ -4416,13 +4357,9 @@ end
   end
 end
 
-
-
 local bank_inst_target = 0
 local bank_send_verify = false
 local bank_send_queue = nil -- {list={voice64,...}, idx=1, inst=0, sys=0, retries=0}
-
-
 
 -- B2.28: Single-Voice SYX import + optional send/verify
 local sv_import_path = ""
@@ -4459,14 +4396,12 @@ local bank_inst_target = 0
 local bank_send_verify = false
 local bank_send_queue = nil -- {list={voice64,...}, idx=1, inst=0, sys=0, retries=0}
 
-
 local last_rx_voice = nil
 local last_rx_voice_raw = nil
 local last_rx_voicebank = nil
 local last_rx_voicebank_raw = nil
 local req_voice_bank = 0
 local req_inst_voice = 0
-
 
 -- B2.24: TrueBulk Send + Verify (Config)
 local bulk_syx_path = ""
@@ -4476,8 +4411,6 @@ local bulk_err = nil
 local verify_stage = nil -- "await_ack" -> "await_dump" -> "done"
 local verify_result = nil -- {ok=bool, diffs=int}
 local verify_target = nil -- payload bytes to compare against
-
-
 
 -- B2.22: Event List Builder state
 local event_items = {} -- {type="cc"/"note"/..., fields...}
@@ -4501,11 +4434,8 @@ local function clamp(v, lo, hi)
   v = math.floor(tonumber(v) or 0)
   if v < lo then return lo end
 
-
 local function encode_ui_value(it, ui_val)
   if it == nil then return ui_val end
-
-
 
 local function decode_bank_any(bytes)
   if not bytes then return nil, "no bytes" end
@@ -4539,7 +4469,6 @@ local function read_file_bytes_bank(path)
   return t
 end
 
-
 local function apply_bank_voice_to_ui(voice_index)
   if not bank_voice_bytes or not bank_voice_bytes[voice_index+1] then
     bank_apply_status = "No voice bytes cached (re-import bank)."
@@ -4559,9 +4488,6 @@ local function apply_bank_voice_to_ui(voice_index)
 
   bank_apply_status = "Applied voice " .. tostring(voice_index) .. " to UI (decoded)."
 end
-
-
-
 
 -- B2.9: Configuration parameter mapping (subset)
 
@@ -4899,7 +4825,6 @@ local function hook_autosave_autosend(msg, is_deactivate)
   end
 end
 
-
 local function fullspec_voice_slider(it)
   local p = tonumber(it.param) or 0
   local label = it.label or ("Param "..tostring(p))
@@ -5121,7 +5046,6 @@ local function build_event_list_sysex(sys_ch)
   return msg
 end
 
-
 -- B2.23: file export helpers
 local function write_bytes_to_file(path, bytes)
   local f = io.open(path, "wb")
@@ -5195,7 +5119,6 @@ end
   return os.date("%Y%m%d_%H%M%S")
 end
 
-
 (bin)
   local out={}
   for i=1,#bin do out[#out+1]=string.format("%02X", bin:byte(i)) end
@@ -5207,7 +5130,6 @@ local function send_sysex(bin)
   r.SetExtState("IFLS_FB01", "SYSEX_PAYLOAD", bin_to_hex(bin), false)
   dofile(root .. "/Pack_v8/Scripts/IFLS_FB01_Send_SysEx_FromExtState.lua")
 end
-
 
 -- Preset / Random / Save-Load helpers (V93)
 
@@ -5259,7 +5181,6 @@ _sysex_throttled(payload_str, delay_ms)
   return true
 end
 
-
 local function rand_int(lo, hi)
   if hi < lo then lo,hi=hi,lo end
   return lo + math.random(0, hi-lo)
@@ -5276,7 +5197,6 @@ local function apply_voice_param(param, val)
   sleep_ms(5)
 end
 
-
 -- B2.20: apply configuration parameter change (instrument-specific)
 local function apply_conf_param(pp, value7)
   pp = tonumber(pp) or 0
@@ -5289,7 +5209,6 @@ local function apply_conf_param(pp, value7)
     enqueue_sysex(msg)
   end
 end
-
 
 local function apply_op_param(op_id, param, val)
   op_vals[op_id+1][param] = val
@@ -5304,7 +5223,6 @@ local function apply_inst_param(param, val)
   inst_vals[param] = val
   local msg = Syx.instrument_param(sysch, inst, param, val)
   if live_send_per_change then send_sysex(msg) end
-
 
 local function apply_cfg_param(param_no, value)
   local msg = Syx.config_param(sys_ch, param_no, clamp(value, 0, 127))
@@ -5514,7 +5432,6 @@ local function load_state_json()
 
   end
 end
-
 
 -- V94 additions: constrained random + user templates
 
@@ -6028,7 +5945,6 @@ if autosave_slot then autosave_deb:request() end
     end
   end
 
-
   end
 end
 
@@ -6077,7 +5993,7 @@ local function operator_panel()
   end
 
   if wide then
-    r.ImGui_Text(ctx, "All Ops (Matrix) – EG + TL/MUL")
+    r.ImGui_Text(ctx, "All Ops (Matrix) â€“ EG + TL/MUL")
     r.ImGui_Separator(ctx)
 
   -- Schema-driven Config UI (Phase 24): edits a local config shadow table; send/apply uses existing config send pipeline.
@@ -6099,7 +6015,6 @@ local function operator_panel()
   end
   r.ImGui_Text(ctx, "Note: This panel is schema-driven and will expand as Schema.PARAMS gains more cfg_* keys.")
   r.ImGui_Separator(ctx)
-
 
     -- Table 1: EG
     if r.ImGui_BeginTable(ctx, "op_matrix_eg", 5,
@@ -6265,12 +6180,11 @@ local function operator_panel()
       end
     end
 
-
       r.ImGui_Text(ctx, "Patch Library Index (folder of .syx bank dumps)")
       local changed
       changed, LIBRARY.folder = r.ImGui_InputText(ctx, "Library folder", LIBRARY.folder or "")
       if changed then _ext_set("library_folder", LIBRARY.folder or "") end
-      if r.ImGui_Button(ctx, "Scan Folder → Build Index", 220, 0) then
+      if r.ImGui_Button(ctx, "Scan Folder â†’ Build Index", 220, 0) then
         local idx, err = _library_scan_folder(LIBRARY.folder)
         if idx then
           LIBRARY.index = idx
@@ -6485,7 +6399,6 @@ local function operator_panel()
 
     r.ImGui_Separator(ctx)
 
-
     -- =========================
     r.ImGui_Text(ctx, "Next/Prev + Scan (Phase 32)")
     if r.ImGui_Button(ctx, "Prev", 70, 0) then _scan_prev() end
@@ -6521,7 +6434,6 @@ local function operator_panel()
     else
       r.ImGui_Text(ctx, "Results scan uses the order you click results (builds a list).")
     end
-
 
       r.ImGui_Text(ctx, "Last sent: " .. tostring(LIBRARY.last_send_ts))
     end
@@ -6577,7 +6489,6 @@ local function operator_panel()
     end
 
     r.ImGui_Separator(ctx)
-
 
     r.ImGui_Text(ctx, "Multi-select tagging")
     local _c
@@ -6687,7 +6598,6 @@ r.ImGui_Separator(ctx)
       end
     end
   end
-
 
             if r.ImGui_Button(ctx, "Audition Voice to Instrument", 260, 0) then
               local bytes, err = _read_file_bytes(bank_entry.path)
@@ -6920,7 +6830,6 @@ local function requests_panel()
   end
 end
 
-
 -- Build a full param-stream snapshot (voice + ops + instrument) as SysEx message list.
 local function build_param_stream_msgs()
   local msgs = {}
@@ -6987,7 +6896,6 @@ if cfg then
   if pending_capture == "A" then cfg_A = cfg; pending_capture = nil end
   if pending_capture == "B" then cfg_B = cfg; pending_capture = nil end
 end
-
 
 if verify_stage == "await_dump" and last_rx_config and verify_target then
   if not (ConfigDump and ConfigDump.diff_bytes) then
@@ -7115,7 +7023,6 @@ end
     if r.ImGui_Button(ctx, "Mark saved", 120, 0) then commit_bound_snapshot(true) end
     r.ImGui_Separator(ctx)
 
-
 if r.ImGui_CollapsingHeader(ctx, "Config Dump + Verify", 0) then
   r.ImGui_Text(ctx, "Request FB-01 config dumps, capture A/B and diff payload bytes. Export last dump to disk.")
   r.ImGui_Separator(ctx)
@@ -7134,9 +7041,6 @@ if r.ImGui_CollapsingHeader(ctx, "Config Dump + Verify", 0) then
   if r.ImGui_Button(ctx, "Request: All Config") then
     enqueue_sysex(Syx.dump_all_config(sys_ch or sysch or 0))
   end
-
-
-
 
 -- =========================
 -- Config Librarian (Phase 25): Capture/Store/Send/Verify config slots
@@ -7240,7 +7144,6 @@ if r.ImGui_Button(ctx, "Verify Slot (request->compare)", 280, 0) then
   end
 end
 
-
 -- Phase 26: Show decoded slot summary (instrument 0 preview)
 if ConfigDump and ConfigDump.decode_payload_to_params and CONFIG_LIB.store then
   local _slot = CONFIG_LIB.store[tostring(CONFIG_LIB.slot)]
@@ -7263,7 +7166,6 @@ if ConfigDump and ConfigDump.decode_payload_to_params and CONFIG_LIB.store then
 end
 
 if CONFIG_LIB.status and CONFIG_LIB.status ~= "" then r.ImGui_Text(ctx, "Status: " .. tostring(CONFIG_LIB.status)) end
-
 
 -- =========================
 -- Phase 27: Multi-instrument Config Editor (cfg_* canonical) + Safety
@@ -7601,11 +7503,6 @@ end
   else
     r.ImGui_Text(ctx, "No config dump received yet (enable Auto Decode and request a dump).")
 
-
-
-
-
-
 if r.ImGui_CollapsingHeader(ctx, "Single Voice Import / Apply", 0) then
   r.ImGui_Text(ctx, "Load a single-voice .syx (InstVoice header), apply to UI, optionally send to an instrument and verify by re-dumping.")
   r.ImGui_Separator(ctx)
@@ -7726,7 +7623,7 @@ if r.ImGui_CollapsingHeader(ctx, "Single Voice Import / Apply", 0) then
     end
 
     if sv_verify_pending then
-      r.ImGui_Text(ctx, "Verify: waiting for inst voice dump…")
+      r.ImGui_Text(ctx, "Verify: waiting for inst voice dumpâ€¦")
     end
     if sv_verify_result then
       if sv_verify_result.ok then
@@ -7772,8 +7669,6 @@ if changed then
   else CAPTURE_CFG.pref_midi_in = pref_idx - 2 end
   _ext_set("preferred_midi_input", CAPTURE_CFG.pref_midi_in)
 end
-
-
 
 -- Phase 22: Preferred MIDI Output (for track routing setups / documentation)
 do
@@ -7856,7 +7751,6 @@ if rchg then CAPTURE_CFG.retry_count_config = rcfg; _ext_set("capture_retry_coun
 local rbank = CAPTURE_CFG.retry_count_bank
 rchg, rbank = r.ImGui_SliderInt(ctx, "Retry Bank", rbank, 0, 5)
 if rchg then CAPTURE_CFG.retry_count_bank = rbank; _ext_set("capture_retry_count_bank", rbank) end
-
 
 -- Phase 6: friendly bank selector (FB-01 voice banks 0..6)
 local bank_names = {
@@ -7960,8 +7854,6 @@ if BANK_VERIFY_REPORT then
     r.ImGui_SetClipboardText(ctx, rep)
   end
 end
-
-
 
 local _c
   _c, bank_import_path = r.ImGui_InputText(ctx, "Bank .syx path", bank_import_path, 4096)
@@ -8223,7 +8115,6 @@ end
   end
 end
 
-
     if r.ImGui_BeginMenuBar(ctx) then
       if r.ImGui_BeginMenu(ctx, "Help", true) then
         r.ImGui_Text(ctx, "Requires: ReaImGui + SWS SysEx")
@@ -8400,7 +8291,6 @@ if last and last.preview then
 end
 if dump_status then r.ImGui_TextWrapped(ctx, dump_status) end
 
-
 -- B2.3: Decode last dump (nibble bulk) + show patch names (heuristic)
 if r.ImGui_Button(ctx, "Decode last dump") then
   local last = Rx.get_last_dump()
@@ -8522,7 +8412,6 @@ if r.ImGui_Button(ctx, "Send selected voice (queued)") then
 end
 if bank_apply_status then r.ImGui_TextWrapped(ctx, bank_apply_status) end
 
-
 if r.ImGui_Button(ctx, "Send CURRENT UI voice (diff queued)") then
   local bytes = encode_current_ui_voice_block()
   local msgs = build_param_stream_from_bytes(bytes, true)
@@ -8559,7 +8448,6 @@ end
 end
 
 if r.ImGui_Button(ctx, "
-
 
 if r.ImGui_CollapsingHeader(ctx, "Parameter List", r.ImGui_TreeNodeFlags_DefaultOpen()) then
   r.ImGui_Text(ctx, "Searchable list of parameters (deterministic keys).")
@@ -9105,13 +8993,6 @@ if r.ImGui_BeginTabItem(ctx, "Event List") then
   r.ImGui_EndTabItem(ctx)
 end
 
-
-
-
-
-
-
-
 r.ImGui_EndTabBar(ctx)
     
       -- schema tab exit snapshot send
@@ -9208,8 +9089,6 @@ local function _cleanup_mode_for_kind(kind)
   if k == "bank"      and CAPTURE_CFG.cleanup_mode_bank      ~= nil then return CAPTURE_CFG.cleanup_mode_bank end
   return CAPTURE_CFG.cleanup_mode or 0
 end
-
-
 
 -- Phase 8: mapping preset storage
 local function _get_preset_dir()
@@ -9409,7 +9288,6 @@ local rbank = CAPTURE_CFG.retry_count_bank
 rchg, rbank = r.ImGui_SliderInt(ctx, "Retry Bank", rbank, 0, 5)
 if rchg then CAPTURE_CFG.retry_count_bank = rbank; _ext_set("capture_retry_count_bank", rbank) end
 
-
 -- Phase 6: friendly bank selector (FB-01 voice banks 0..6)
 local bank_names = {
   "Bank 1 (RAM1) [id=0]",
@@ -9512,8 +9390,6 @@ if BANK_VERIFY_REPORT then
     r.ImGui_SetClipboardText(ctx, rep)
   end
 end
-
-
 
 local _c
   _c, bank_import_path = r.ImGui_InputText(ctx, "Bank .syx path", bank_import_path, 4096)
@@ -9775,7 +9651,6 @@ end
   end
 end
 
-
     if r.ImGui_BeginMenuBar(ctx) then
       if r.ImGui_BeginMenu(ctx, "Help", true) then
         r.ImGui_Text(ctx, "Requires: ReaImGui + SWS SysEx")
@@ -9952,7 +9827,6 @@ if last and last.preview then
 end
 if dump_status then r.ImGui_TextWrapped(ctx, dump_status) end
 
-
 -- B2.3: Decode last dump (nibble bulk) + show patch names (heuristic)
 if r.ImGui_Button(ctx, "Decode last dump") then
   local last = Rx.get_last_dump()
@@ -10074,7 +9948,6 @@ if r.ImGui_Button(ctx, "Send selected voice (queued)") then
 end
 if bank_apply_status then r.ImGui_TextWrapped(ctx, bank_apply_status) end
 
-
 if r.ImGui_Button(ctx, "Send CURRENT UI voice (diff queued)") then
   local bytes = encode_current_ui_voice_block()
   local msgs = build_param_stream_from_bytes(bytes, true)
@@ -10111,7 +9984,6 @@ end
 end
 
 if r.ImGui_Button(ctx, "
-
 
 if r.ImGui_CollapsingHeader(ctx, "Parameter List", r.ImGui_TreeNodeFlags_DefaultOpen()) then
   r.ImGui_Text(ctx, "Searchable list of parameters (deterministic keys).")
@@ -10657,13 +10529,6 @@ if r.ImGui_BeginTabItem(ctx, "Event List") then
   r.ImGui_EndTabItem(ctx)
 end
 
-
-
-
-
-
-
-
 r.ImGui_EndTabBar(ctx)
     
       -- schema tab exit snapshot send
@@ -10760,8 +10625,6 @@ local function _cleanup_mode_for_kind(kind)
   if k == "bank"      and CAPTURE_CFG.cleanup_mode_bank      ~= nil then return CAPTURE_CFG.cleanup_mode_bank end
   return CAPTURE_CFG.cleanup_mode or 0
 end
-
-
 
 -- Phase 8: mapping preset storage
 local function _get_preset_dir()

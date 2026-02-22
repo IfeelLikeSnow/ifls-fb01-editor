@@ -81,7 +81,7 @@ local is_zip = target:lower():match("%.zip$")
 if is_zip then
   -- try: powershell Expand-Archive, or unzip
   if r.GetOS():match("Win") then
-    os.execute('powershell -NoProfile -Command "Try {Expand-Archive -Force ''..target..'' ''..temp..'' } Catch { }"')
+    os.execute('powershell -NoProfile -Command "Try {Expand-Archive -Force \''..target..'\' \''..temp..'\' } Catch { }"')
   else
     os.execute('unzip -o "'..target..'" -d "'..temp..'" >/dev/null 2>&1')
   end

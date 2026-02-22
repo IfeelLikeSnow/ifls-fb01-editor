@@ -262,186 +262,44 @@ function Schema.safe_randomize_voice_style(voice_vals, op_vals, style_name, opts
   return vv, oo
 end
 
-return Schema
-
-
-
--- Phase 11.3: normalize schema entries (safe_min/safe_max/weight defaults)
-function Schema._normalize_param_def(def)
-  if not def then return def end
-  if def.min ~= nil and def.max ~= nil then
-    if def.safe_min == nil then def.safe_min = def.min end
-    if def.safe_max == nil then def.safe_max = def.max end
+-- FIX: Schema.get() + Schema.PARAMS builder (repair corrupted release)
+function Schema.get(a, b)
+  -- Backwards compatible: Schema.get(tbl, key) or Schema.get('voice.param')
+  if type(a) == 'table' then
+    local key = _canon(b)
+    return a[key] or a[b]
   end
-  if def.weight == nil then def.weight = 1.0 end
-  if def.safe == nil then def.safe = true end
-  return def
+  local path = _canon(a)
+  if not path then return nil end
+  local head, rest = path:match('^([^.]+)%.(.+)$')
+  if head == 'voice' then return Schema.voice and Schema.voice[_canon(rest)] or nil end
+  if head == 'op' then return Schema.op and Schema.op[_canon(rest)] or nil end
+  if head == 'config' then return Schema.config and Schema.config[_canon(rest)] or nil end
+  -- fallback: try direct keys
+  return (Schema.voice and Schema.voice[path]) or (Schema.op and Schema.op[path]) or (Schema.config and Schema.config[path])
 end
 
--- Wrap Schema.get to always return normalized defs
-local _old_get = Schema.get
-function Schema.get(path)
-  local def = _old_get(path)
-  
--- Phase 12: style profiles (weights/constraints for randomize)
-Schema.STYLE_PROFILES = {
-  Bass = { focus = { "op.multiple", "op.output_level", "voice.feedback" }, algo_whitelist = {0,1,2,3}, feedback_max=5 },
-  Pad  = { focus = { "voice.lfo_speed", "voice.lfo_amd", "op.release_rate", "op.sustain_level" }, algo_whitelist = {4,5,6,7}, feedback_max=3 },
-  Bell = { focus = { "op.multiple", "op.detune", "op.attack_rate" }, algo_whitelist = {2,3,4,5}, feedback_max=4 },
-  Perc = { focus = { "op.attack_rate", "op.decay1_rate", "op.decay2_rate" }, algo_whitelist = {0,1,2}, feedback_max=2 },
-  FX   = { focus = { "voice.lfo_pmd", "voice.lfo_amd", "voice.controller" }, algo_whitelist = {0,1,2,3,4,5,6,7}, feedback_max=7, allow_ctrl_advanced=true },
-}
-
-function Schema.safe_randomize_voice_style(voice_vals, op_vals, style_name, opts)
-  opts = opts or {}
-  local prof = Schema.STYLE_PROFILES[style_name]
-  if not prof then return Schema.safe_randomize_voice(voice_vals, op_vals, opts) end
-  local o2 = {}
-  for k,v in pairs(opts) do o2[k]=v end
-  if prof.allow_ctrl_advanced then o2.allow_controller_advanced = true end
-  local vv, oo = Schema.safe_randomize_voice(voice_vals, op_vals, o2)
-  if prof.algo_whitelist and vv.algorithm ~= nil then
-    local wl = prof.algo_whitelist
-    vv.algorithm = wl[ (math.random(1,#wl)) ]
-  end
-  if prof.feedback_max and vv.feedback ~= nil then
-    vv.feedback = math.min(vv.feedback, prof.feedback_max)
-  end
-  return vv, oo
-end
-
-
--- Phase 21: Additional canonical parameter defs (VoiceMap-aligned)
-Schema.PARAMS["pitchbend_range"]   = Schema.PARAMS["pitchbend_range"]   or { min=0, max=12, safe_min=0, safe_max=12, group="voice.ctrl" }
-Schema.PARAMS["portamento_time"]  = Schema.PARAMS["portamento_time"]  or { min=0, max=127, safe_min=0, safe_max=90, group="voice.ctrl" }
-Schema.PARAMS["controller_set"]   = Schema.PARAMS["controller_set"]   or { min=0, max=7, safe_min=0, safe_max=4, group="voice.ctrl", enum="controller_set" }
-
-Schema.PARAMS["lfo_speed"]        = Schema.PARAMS["lfo_speed"]        or { min=0, max=127, safe_min=0, safe_max=110, group="voice.lfo" }
-Schema.PARAMS["lfo_amd"]          = Schema.PARAMS["lfo_amd"]          or { min=0, max=127, safe_min=0, safe_max=90, group="voice.lfo" }
-Schema.PARAMS["lfo_pmd"]          = Schema.PARAMS["lfo_pmd"]          or { min=0, max=127, safe_min=0, safe_max=90, group="voice.lfo" }
-Schema.PARAMS["lfo_pms"]          = Schema.PARAMS["lfo_pms"]          or { min=0, max=7,   safe_min=0, safe_max=5,  group="voice.lfo" }
-Schema.PARAMS["lfo_wave"]         = Schema.PARAMS["lfo_wave"]         or { min=0, max=3,   safe_min=0, safe_max=3,  group="voice.lfo", enum="lfo_wave" }
-Schema.PARAMS["lfo_key_sync"]     = Schema.PARAMS["lfo_key_sync"]     or { min=0, max=1, safe_min=0, safe_max=1, group="voice.lfo" }
-Schema.PARAMS["lfo_load"]         = Schema.PARAMS["lfo_load"]         or { min=0, max=1, safe_min=0, safe_max=1, group="voice.lfo" }
-
--- Operator canonical keys (per op table)
-Schema.PARAMS["attack_rate"]      = Schema.PARAMS["attack_rate"]      or { min=0, max=31, safe_min=0, safe_max=28, group="op.env" }
-Schema.PARAMS["decay1_rate"]      = Schema.PARAMS["decay1_rate"]      or { min=0, max=31, safe_min=0, safe_max=28, group="op.env" }
-Schema.PARAMS["decay2_rate"]      = Schema.PARAMS["decay2_rate"]      or { min=0, max=31, safe_min=0, safe_max=28, group="op.env" }
-Schema.PARAMS["release_rate"]     = Schema.PARAMS["release_rate"]     or { min=0, max=15, safe_min=0, safe_max=14, group="op.env" }
-Schema.PARAMS["sustain_level"]    = Schema.PARAMS["sustain_level"]    or { min=0, max=15, safe_min=0, safe_max=15, group="op.env" }
-Schema.PARAMS["attack_velocity"]  = Schema.PARAMS["attack_velocity"]  or { min=0, max=7,  safe_min=0, safe_max=5,  group="op.env" }
-
-Schema.PARAMS["volume"]           = Schema.PARAMS["volume"]           or { min=0, max=127, safe_min=0, safe_max=110, group="op.level" }
-Schema.PARAMS["level_curb"]       = Schema.PARAMS["level_curb"]       or { min=0, max=15, safe_min=0, safe_max=12, group="op.level" }
-Schema.PARAMS["level_velocity"]   = Schema.PARAMS["level_velocity"]   or { min=0, max=7,  safe_min=0, safe_max=6,  group="op.level" }
-Schema.PARAMS["level_depth"]      = Schema.PARAMS["level_depth"]      or { min=0, max=127, safe_min=0, safe_max=100, group="op.level" }
-
-Schema.PARAMS["multiple"]         = Schema.PARAMS["multiple"]         or { min=0, max=15, safe_min=0, safe_max=12, group="op.freq" }
-Schema.PARAMS["detune"]           = Schema.PARAMS["detune"]           or { min=0, max=7,  safe_min=0, safe_max=6,  group="op.freq" }
-
-Schema.ENUMS = Schema.ENUMS or {}
-Schema.ENUMS["lfo_wave"] = Schema.ENUMS["lfo_wave"] or { [0]="Triangle",[1]="Saw",[2]="Square",[3]="S&H" }
-Schema.ENUMS["controller_set"] = Schema.ENUMS["controller_set"] or { [0]="Off",[1]="Aftertouch",[2]="Mod Wheel",[3]="Breath",[4]="Foot",[5]="Volume",[6]="Sustain",[7]="Porta" }
-
-
-
--- Phase 21.1: more canonical defs (VoiceMap-aligned, minimal but high-impact)
-Schema.PARAMS["algorithm"]      = Schema.PARAMS["algorithm"]      or { min=0, max=7, safe_min=0, safe_max=7, group="voice.common" }
-Schema.PARAMS["feedback"]       = Schema.PARAMS["feedback"]       or { min=0, max=7, safe_min=0, safe_max=6, group="voice.common" }
-Schema.PARAMS["transpose"]      = Schema.PARAMS["transpose"]      or { min=0, max=48, safe_min=12, safe_max=36, group="voice.common" }
-Schema.PARAMS["mono_poly"]      = Schema.PARAMS["mono_poly"]      or { min=0, max=1, safe_min=0, safe_max=1, group="voice.common" }
-Schema.PARAMS["poly_mode"]      = Schema.PARAMS["poly_mode"]      or { min=0, max=1, safe_min=0, safe_max=1, group="voice.common" }
-
-Schema.PARAMS["op1_enable"]     = Schema.PARAMS["op1_enable"]     or { min=0, max=1, safe_min=0, safe_max=1, group="voice.ops" }
-Schema.PARAMS["op2_enable"]     = Schema.PARAMS["op2_enable"]     or { min=0, max=1, safe_min=0, safe_max=1, group="voice.ops" }
-Schema.PARAMS["op3_enable"]     = Schema.PARAMS["op3_enable"]     or { min=0, max=1, safe_min=0, safe_max=1, group="voice.ops" }
-Schema.PARAMS["op4_enable"]     = Schema.PARAMS["op4_enable"]     or { min=0, max=1, safe_min=0, safe_max=1, group="voice.ops" }
-
-Schema.ENUMS["mono_poly"] = Schema.ENUMS["mono_poly"] or { [0]="Poly", [1]="Mono" }
-Schema.ENUMS["poly_mode"] = Schema.ENUMS["poly_mode"] or { [0]="Poly-1", [1]="Poly-2" }
-
-
-
--- Phase 22: style-aware randomize entry point (used by Generate Variations)
-function Schema.safe_randomize_voice(voice_vals, op_vals, style, strict)
-  -- Backward compatible wrapper: if old signature (voice_vals, op_vals) is used, style=nil
-  local st = style or "Pad"
-  -- Use existing style profiles if available
-  if Schema.safe_randomize_voice_style then
-    return Schema.safe_randomize_voice_style(voice_vals, op_vals, st, strict)
-  end
-  -- Minimal fallback: randomize known params within safe ranges
-  local function rand_param(t, key, def)
-    local p = Schema.PARAMS[key] or def
-    if not p then return end
-    local lo = p.safe_min or p.min or 0
-    local hi = p.safe_max or p.max or 127
-    t[key] = math.random(lo, hi)
-  end
-  rand_param(voice_vals, "algorithm", {safe_min=0,safe_max=7})
-  rand_param(voice_vals, "feedback",  {safe_min=0,safe_max=6})
-  rand_param(voice_vals, "transpose", {safe_min=12,safe_max=36})
-  rand_param(voice_vals, "pitchbend_range", {safe_min=0,safe_max=12})
-  rand_param(voice_vals, "portamento_time", {safe_min=0,safe_max=90})
-  rand_param(voice_vals, "lfo_speed", {safe_min=0,safe_max=110})
-  rand_param(voice_vals, "lfo_amd", {safe_min=0,safe_max=90})
-  rand_param(voice_vals, "lfo_pmd", {safe_min=0,safe_max=90})
-  rand_param(voice_vals, "lfo_pms", {safe_min=0,safe_max=5})
-  for op=1,4 do
-    local o = op_vals["op"..op]
-    if o then
-      rand_param(o, "volume", {safe_min=0,safe_max=110})
-      rand_param(o, "multiple", {safe_min=0,safe_max=12})
-      rand_param(o, "detune", {safe_min=0,safe_max=6})
-      rand_param(o, "attack_rate", {safe_min=0,safe_max=28})
-      rand_param(o, "decay1_rate", {safe_min=0,safe_max=28})
-      rand_param(o, "decay2_rate", {safe_min=0,safe_max=28})
-      rand_param(o, "release_rate", {safe_min=0,safe_max=14})
-      rand_param(o, "sustain_level", {safe_min=0,safe_max=15})
+Schema.PARAMS = Schema.PARAMS or {}
+local function _add_params(prefix, t)
+  if not t then return end
+  for k,def in pairs(t) do
+    if type(def) == 'table' then
+      local key = _canon(k)
+      local p = {}
+      for kk,vv in pairs(def) do p[kk]=vv end
+      p.key = prefix .. key
+      Schema.PARAMS[p.key] = p
     end
   end
 end
+_add_params('', Schema.voice)
+_add_params('', Schema.op)
+_add_params('cfg_', Schema.config)
 
+-- Ensure tooltip table exists (optional)
+Schema.DESC = Schema.DESC or {}
 
-
--- Phase 23: Config/Performance canonical defs (minimal set for unified schema & tooltips)
-Schema.PARAMS["cfg_midi_channel"]  = Schema.PARAMS["cfg_midi_channel"]  or { min=1, max=16, safe_min=1, safe_max=16, group="config.instrument" }
-Schema.PARAMS["cfg_key_low"]       = Schema.PARAMS["cfg_key_low"]       or { min=0, max=127, safe_min=0, safe_max=127, group="config.instrument" }
-Schema.PARAMS["cfg_key_high"]      = Schema.PARAMS["cfg_key_high"]      or { min=0, max=127, safe_min=0, safe_max=127, group="config.instrument" }
-Schema.PARAMS["cfg_pan"]           = Schema.PARAMS["cfg_pan"]           or { min=0, max=127, safe_min=0, safe_max=127, group="config.instrument" }
-Schema.PARAMS["cfg_level"]         = Schema.PARAMS["cfg_level"]         or { min=0, max=127, safe_min=0, safe_max=110, group="config.instrument" }
-Schema.PARAMS["cfg_detune"]        = Schema.PARAMS["cfg_detune"]        or { min=0, max=7, safe_min=0, safe_max=6, group="config.instrument" }
-Schema.PARAMS["cfg_octave"]        = Schema.PARAMS["cfg_octave"]        or { min=0, max=4, safe_min=1, safe_max=3, group="config.instrument" }
-
-
-
--- Phase 24: more config keys for schema-driven UI (extend as manual mapping grows)
-Schema.PARAMS["cfg_bank_no"]       = Schema.PARAMS["cfg_bank_no"]       or { min=1, max=7, safe_min=1, safe_max=2, group="config.instrument" }
-Schema.PARAMS["cfg_voice_no"]      = Schema.PARAMS["cfg_voice_no"]      or { min=1, max=48, safe_min=1, safe_max=48, group="config.instrument" }
-Schema.PARAMS["cfg_pb_range"]      = Schema.PARAMS["cfg_pb_range"]      or { min=0, max=12, safe_min=0, safe_max=12, group="config.instrument" }
-Schema.PARAMS["cfg_porta_time"]    = Schema.PARAMS["cfg_porta_time"]    or { min=0, max=127, safe_min=0, safe_max=90, group="config.instrument" }
-Schema.PARAMS["cfg_mono_poly"]     = Schema.PARAMS["cfg_mono_poly"]     or { min=0, max=1, safe_min=0, safe_max=1, group="config.instrument", enum="mono_poly" }
-
-
-
--- Phase 27: config full schema (extends config.instrument for multi-instrument editor)
-Schema.PARAMS["cfg_notes"]      = Schema.PARAMS["cfg_notes"]      or { min=0, max=8, safe_min=0, safe_max=8, group="config.instrument" }
-Schema.PARAMS["cfg_octave"]     = Schema.PARAMS["cfg_octave"]     or { min=0, max=4, safe_min=1, safe_max=3, group="config.instrument" }
-Schema.PARAMS["cfg_lfo_enable"] = Schema.PARAMS["cfg_lfo_enable"] or { min=0, max=1, safe_min=0, safe_max=1, group="config.instrument" }
-Schema.PARAMS["cfg_pmd_ctrl"]   = Schema.PARAMS["cfg_pmd_ctrl"]   or { min=0, max=7, safe_min=0, safe_max=4, group="config.instrument" }
-Schema.PARAMS["cfg_lfo_speed"]  = Schema.PARAMS["cfg_lfo_speed"]  or { min=0, max=127, safe_min=0, safe_max=110, group="config.instrument" }
-Schema.PARAMS["cfg_amd"]        = Schema.PARAMS["cfg_amd"]        or { min=0, max=127, safe_min=0, safe_max=90, group="config.instrument" }
-Schema.PARAMS["cfg_pmd"]        = Schema.PARAMS["cfg_pmd"]        or { min=0, max=127, safe_min=0, safe_max=90, group="config.instrument" }
-Schema.PARAMS["cfg_lfo_wave"]   = Schema.PARAMS["cfg_lfo_wave"]   or { min=0, max=3, safe_min=0, safe_max=3, group="config.instrument", enum="lfo_wave" }
-Schema.PARAMS["cfg_lfo_load"]   = Schema.PARAMS["cfg_lfo_load"]   or { min=0, max=1, safe_min=0, safe_max=1, group="config.instrument" }
-Schema.PARAMS["cfg_lfo_sync"]   = Schema.PARAMS["cfg_lfo_sync"]   or { min=0, max=1, safe_min=0, safe_max=1, group="config.instrument" }
-Schema.PARAMS["cfg_ams"]        = Schema.PARAMS["cfg_ams"]        or { min=0, max=3, safe_min=0, safe_max=3, group="config.instrument" }
-Schema.PARAMS["cfg_pms"]        = Schema.PARAMS["cfg_pms"]        or { min=0, max=7, safe_min=0, safe_max=5, group="config.instrument" }
-
-
-
--- Phase 29: tooltips/descriptions (minimal, expand later)
+-- Tooltips (kept from original)
 Schema.DESC = Schema.DESC or {}
 Schema.DESC["algorithm"] = "FM algorithm (operator routing)."
 Schema.DESC["feedback"] = "Feedback amount (algorithm dependent)."
@@ -471,6 +329,6 @@ Schema.DESC["release_rate"] = "Operator release rate."
 Schema.DESC["sustain_level"] = "Operator sustain level."
 
 
+
 return Schema
-._normalize_param_def(def)
-end
+

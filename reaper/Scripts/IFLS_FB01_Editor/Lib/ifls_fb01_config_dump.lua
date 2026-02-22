@@ -35,6 +35,8 @@ local PARAMS = {
   [22] = { key="ams",        name="AMS" },
   [23] = { key="pms",        name="PMS" },
 
+}
+
 local CANON = {
   midi_ch="cfg_midi_channel",
   key_hi="cfg_key_high",
@@ -56,7 +58,6 @@ local CANON = {
   lfo_sync="cfg_lfo_sync",
   ams="cfg_ams",
   pms="cfg_pms",
-}
 }
 
 local function sum7(bytes, a, b)
