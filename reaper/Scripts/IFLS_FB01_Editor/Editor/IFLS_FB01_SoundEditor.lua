@@ -594,10 +594,6 @@ local function _send_test_note(chan, note, vel, on)
   r.StuffMIDIMessage(dest, status, n, v)
 end
   r.StuffMIDIMessage(dest, status, note or 60, vel or 100)
-ends to REAPER's MIDI outputs; for hardware, ensure your MIDI track routes notes to the FB-01.
-  local status = (on and 0x90 or 0x80) + (chan or 0)
-  r.StuffMIDIMessage(0, status, note or 60, vel or 100)
-end
 
 local function _autocal_reset()
   AUTOCAL.running=false
