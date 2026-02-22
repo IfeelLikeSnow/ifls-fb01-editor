@@ -2,7 +2,7 @@
 <index version="1" name="IFLS FB-01 Editor">
   <category name="Editors">
     <reapack name="IFLS FB-01 Editor" type="script" desc="Yamaha FB-01 editor &amp; librarian for REAPER.">
-      <version name="0.1.11" time="2026-02-21T17:36:05Z">
+      <version name="0.1.12" time="2026-02-22T10:46:04Z">
         <source file="../CHANGELOG_V50.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/CHANGELOG_V50.md</source>
         <source file="../CHANGELOG_V51.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/CHANGELOG_V51.md</source>
         <source file="../CHANGELOG_V52.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/CHANGELOG_V52.md</source>
@@ -54,6 +54,7 @@
         <source file="../Current/README.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Current/README.md</source>
         <source file="../Data/fb01_params_mvp.json">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Data/fb01_params_mvp.json</source>
         <source file="../Editor/IFLS_FB01_SoundEditor.lua" main="main">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Editor/IFLS_FB01_SoundEditor.lua</source>
+        <source file="../Editor/IFLS_FB01_SoundEditor.lua.bak_20260222_102300">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Editor/IFLS_FB01_SoundEditor.lua.bak_20260222_102300</source>
         <source file="../Editors/Effects/IFLS/IFLS_FB01_ToneFix.jsfx">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Editors/Effects/IFLS/IFLS_FB01_ToneFix.jsfx</source>
         <source file="../Lib/ifls_fb01_bank.lua">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Lib/ifls_fb01_bank.lua</source>
         <source file="../Lib/ifls_fb01_config_dump.lua">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/Lib/ifls_fb01_config_dump.lua</source>
