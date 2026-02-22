@@ -22,3 +22,7 @@ reaper/Scripts/**/library_tags.json
 
 # Optional third-party libraries (keep out of public repo)
 optional_libraries/
+
+# IFLS patch backups
+*.bak_*
+
