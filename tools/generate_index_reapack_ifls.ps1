@@ -1,4 +1,4 @@
-param(
+﻿param(
   [Parameter(Mandatory=$true)][string]$Owner,
   [Parameter(Mandatory=$true)][string]$Repo,
   [Parameter(Mandatory=$true)][string]$Version,
@@ -9,16 +9,11 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-function UrlEscape([string]$s){
-  return ($s -replace " ", "%20")
-}
+function UrlEscape([string]$s){ return ($s -replace " ", "%20") }
 
 $repoRoot = (Resolve-Path ".").Path
-
 $scriptsRoot = Join-Path $repoRoot "reaper\Scripts\IFLS_FB01_Editor"
-if(!(Test-Path $scriptsRoot)){
-  throw "Repo scripts root not found: $scriptsRoot"
-}
+if(!(Test-Path $scriptsRoot)){ throw "Repo scripts root not found: $scriptsRoot" }
 
 $menuRoots = @()
 $mr1 = Join-Path $repoRoot "MenuSets"
@@ -45,31 +40,30 @@ function RawUrl([string]$repoRel){
 
 $now = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
 $sb = New-Object System.Text.StringBuilder
-
 [void]$sb.AppendLine('<?xml version="1.0" encoding="UTF-8"?>')
 [void]$sb.AppendLine(('<index version="1" name="{0}">' -f $PackageName))
 [void]$sb.AppendLine(('  <category name="{0}">' -f $Category))
 [void]$sb.AppendLine(('    <reapack name="{0}" type="script" desc="Yamaha FB-01 editor &amp; librarian for REAPER.">' -f $PackageName))
 [void]$sb.AppendLine(('      <version name="{0}" time="{1}">' -f $Version, $now))
 
+# Scripts: Category erzeugt Unterordner -> ../ escaped raus -> Installation wird flach
 foreach($f in $scriptFiles){
-  $relRepo = $f.FullName.Substring($repoRoot.Length+1)
-  $relInRoot = $f.FullName.Substring($scriptsRoot.Length+1).Replace('\','/')
+  $relRepo  = $f.FullName.Substring($repoRoot.Length+1)
+  $relInPkg = $f.FullName.Substring($scriptsRoot.Length+1).Replace('\','/')
   $url = RawUrl $relRepo
-
-  # Category creates a subfolder; ../ escapes out so we install into Scripts/IFLS FB-01 Editor/<rel>
-  $install = "../" + $relInRoot
+  $install = "../" + $relInPkg
 
   $mainAttr = ""
-  if($relInRoot -ieq "Editor/IFLS_FB01_SoundEditor.lua" -or
-     $relInRoot -ieq "IFLS_FB01_Register_Actions.lua" -or
-     $relInRoot.StartsWith("Actions/")){
+  if($relInPkg -ieq "Editor/IFLS_FB01_SoundEditor.lua" -or
+     $relInPkg -ieq "IFLS_FB01_Register_Actions.lua" -or
+     $relInPkg.StartsWith("Actions/")){
     if($f.Extension -ieq ".lua"){ $mainAttr = ' main="main"' }
   }
 
   [void]$sb.AppendLine(('        <source file="{0}"{1}>{2}</source>' -f $install, $mainAttr, $url))
 }
 
+# MenuSets: direkt nach REAPER\MenuSets
 foreach($m in $menuFiles){
   $relRepo = $m.FullName.Substring($repoRoot.Length+1)
   $url = RawUrl $relRepo
@@ -77,6 +71,7 @@ foreach($m in $menuFiles){
   [void]$sb.AppendLine(('        <source file="{0}" type="data">{1}</source>' -f $install, $url))
 }
 
+# Effects: nach REAPER\Effects\IFLS
 foreach($fx in $fxFiles){
   $relRepo = $fx.FullName.Substring($repoRoot.Length+1)
   $url = RawUrl $relRepo
@@ -91,8 +86,4 @@ foreach($fx in $fxFiles){
 
 $xmlPath = Join-Path $repoRoot "index.xml"
 [System.IO.File]::WriteAllText($xmlPath, $sb.ToString(), (New-Object System.Text.UTF8Encoding($false)))
-
 Write-Host "Wrote: $xmlPath"
-Write-Host ("Scripts:  {0}" -f $scriptFiles.Count)
-Write-Host ("MenuSets: {0}" -f $menuFiles.Count)
-Write-Host ("FX:       {0}" -f $fxFiles.Count)

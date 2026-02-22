@@ -2,7 +2,7 @@
 <index version="1" name="IFLS FB-01 Editor">
   <category name="Editors">
     <reapack name="IFLS FB-01 Editor" type="script" desc="Yamaha FB-01 editor &amp; librarian for REAPER.">
-      <version name="0.1.12" time="2026-02-22T10:46:04Z">
+      <version name="0.1.13" time="2026-02-22T11:08:36Z">
         <source file="../CHANGELOG_V50.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/CHANGELOG_V50.md</source>
         <source file="../CHANGELOG_V51.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/CHANGELOG_V51.md</source>
         <source file="../CHANGELOG_V52.md">https://raw.githubusercontent.com/IfeelLikeSnow/ifls-fb01-editor/main/reaper/Scripts/IFLS_FB01_Editor/CHANGELOG_V52.md</source>

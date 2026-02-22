@@ -1,4 +1,4 @@
-name: Validate ReaPack index.xml
+﻿name: Validate ReaPack index.xml
 
 on:
   push:
@@ -20,22 +20,41 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+<<<<<<< HEAD
       - name: XML well-formed check (xmllint)
         uses: ChristophWurst/xmllint-action@v1
         with:
           xml-file: index.xml
+=======
+      # xmllint lokal ausführen (kein Action-Wrapper nötig -> weniger Fehlerquellen)
+      - name: XML well-formed check (xmllint)
+        run: |
+          if ! command -v xmllint >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y libxml2-utils
+          fi
+          xmllint --noout index.xml
+>>>>>>> 86ce092 (Fix ReaPack installation: valid index.xml + fixed workflow)
 
       - name: Reject empty <source> URLs
         run: |
           python3 - <<'PY'
           import re, pathlib, sys
           txt = pathlib.Path("index.xml").read_text(encoding="utf-8", errors="replace")
+<<<<<<< HEAD
           bad1 = re.findall(r'<source\b[^>]*/>', txt)                  # self-closing <source .../>
           bad2 = re.findall(r'<source\b[^>]*>\s*</source>', txt)       # empty-text <source>   </source>
+=======
+          if "<index" not in txt or "<source" not in txt:
+              print("index.xml does not look like a ReaPack XML index (missing <index> or <source>)")
+              sys.exit(1)
+          bad1 = re.findall(r'<source\b[^>]*/>', txt)                  # self-closing <source .../>
+          bad2 = re.findall(r'<source\b[^>]*>\s*</source>', txt)       # empty-text <source> </source>
+>>>>>>> 86ce092 (Fix ReaPack installation: valid index.xml + fixed workflow)
           if bad1 or bad2:
               print("Invalid ReaPack index: empty <source> URL")
               for m in (bad1 + bad2)[:50]:
                   print(m)
               sys.exit(1)
-          print("OK: no empty <source> tags")
+          print("OK")
           PY
