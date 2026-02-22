@@ -860,7 +860,23 @@ if AUTOCAL.phase == "pause" then
     end
     return
   end
-if AUTOCAL.phase == "finish" then
+    -- advance
+    AUTOCAL.op = AUTOCAL.op + 1
+    if AUTOCAL.op > 4 then
+      AUTOCAL.op = 1
+      AUTOCAL.algo = AUTOCAL.algo + 1
+      if AUTOCAL.algo > 7 then
+        AUTOCAL.phase = "finish"
+      else
+        AUTOCAL.phase = "prep_algo"
+      end
+    else
+      AUTOCAL.phase = "prep_algo"
+    end
+    return
+  end
+
+  if AUTOCAL.phase == "finish" then
     AUTOCAL.status = "AutoCal finished. Applying carriers + exporting report..."
     -- apply per algo
     for a=0,7 do
@@ -1109,10 +1125,10 @@ local function _install_ifls_toolbar(toolbar_num)
   local msg =
     "Toolbar file created:\n\n" .. file ..
     "\n\nNext steps:\n" ..
-    "1) Options ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Customize menus/toolbarsÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦\n" ..
+    "1) Options Ã¢â€ â€™ Customize menus/toolbarsÃ¢â‚¬Â¦\n" ..
     "2) Choose 'Floating toolbar "..tostring(toolbar_num).."' in the dropdown\n" ..
-    "3) Click ImportÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ and pick the file above\n\n" ..
-    "Tip: You can rightÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Ëœclick any toolbar area ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Open toolbar ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Floating toolbar "..tostring(toolbar_num)
+    "3) Click ImportÃ¢â‚¬Â¦ and pick the file above\n\n" ..
+    "Tip: You can rightÃ¢â‚¬â€˜click any toolbar area Ã¢â€ â€™ Open toolbar Ã¢â€ â€™ Floating toolbar "..tostring(toolbar_num)
 
   r.ShowMessageBox(msg, "IFLS FB-01 Toolbar installed", 0)
 
@@ -1809,7 +1825,7 @@ local function _maybe_reassemble_bank_dump()
   return false
 end
 -- =========================
--- PHASE 19 ROUNDTRIP: ExportÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢SendÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢DumpÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢Compare for Bank, ROM-safety, Write-to-instrument workflow
+-- PHASE 19 ROUNDTRIP: ExportÃ¢â€ â€™SendÃ¢â€ â€™DumpÃ¢â€ â€™Compare for Bank, ROM-safety, Write-to-instrument workflow
 -- =========================
 local function _is_rom_bank(bank_no)
   -- Practical safety default: treat 1..2 as writable (RAM), 3..7 as ROM
@@ -5966,7 +5982,7 @@ local function operator_panel()
   end
 
   if wide then
-    r.ImGui_Text(ctx, "All Ops (Matrix) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ EG + TL/MUL")
+    r.ImGui_Text(ctx, "All Ops (Matrix) Ã¢â‚¬â€œ EG + TL/MUL")
     r.ImGui_Separator(ctx)
 
   -- Schema-driven Config UI (Phase 24): edits a local config shadow table; send/apply uses existing config send pipeline.
@@ -6157,7 +6173,7 @@ local function operator_panel()
       local changed
       changed, LIBRARY.folder = r.ImGui_InputText(ctx, "Library folder", LIBRARY.folder or "")
       if changed then _ext_set("library_folder", LIBRARY.folder or "") end
-      if r.ImGui_Button(ctx, "Scan Folder ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ Build Index", 220, 0) then
+      if r.ImGui_Button(ctx, "Scan Folder Ã¢â€ â€™ Build Index", 220, 0) then
         local idx, err = _library_scan_folder(LIBRARY.folder)
         if idx then
           LIBRARY.index = idx
@@ -7596,7 +7612,7 @@ if r.ImGui_CollapsingHeader(ctx, "Single Voice Import / Apply", 0) then
     end
 
     if sv_verify_pending then
-      r.ImGui_Text(ctx, "Verify: waiting for inst voice dumpÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦")
+      r.ImGui_Text(ctx, "Verify: waiting for inst voice dumpÃ¢â‚¬Â¦")
     end
     if sv_verify_result then
       if sv_verify_result.ok then
